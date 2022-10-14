@@ -1,7 +1,7 @@
 //* base Actor
 
 class Actor {
-    constructor(atrHP, atrSTR, atrDEX, atrINT){
+    constructor(){
         this.actorName = "";
         this.atrHP = 12;
         this.atrSTR = 10;
@@ -11,6 +11,14 @@ class Actor {
 
     receiveDamage(damage) {
         this.atrHP = this.atrHP - damage;
+    }
+
+    rollD20() {
+        return (Math.floor(Math.random() * (20 - 1 + 1) + 1));
+    }
+
+    rollD6() {
+        return (Math.floor(Math.random() * (6 - 1 + 1) + 1));
     }
 }
 
@@ -53,6 +61,13 @@ class Warrior extends Human {
         this.atrSTR = atrSTR + warriorBonusSTR;
         this.atrDEX = atrDEX + warriorBonusDEX;
         this.atrINT = atrINT + warriorBonusINT;
+    }
+
+    heavySlash(target){
+        if (this.atrSTR + this.roll20() >= target.atrDEX) {
+            return this.rollD6() + this.atrSTR;
+        }
+        return 0;
     }
 }
 
