@@ -21,6 +21,16 @@ class Actor {
         return (Math.floor(Math.random() * (6 - 1 + 1) + 1));
     }
 
+    rollDice(diceSize) {
+        if (typeof diceSize !== number ) {
+            throw new Error ('method "rollDice" received a non-number as an Argument')
+        }
+        if (diceSize !== 4 || diceSize !== 6 || diceSize !== 10 || diceSize !== 12 || diceSize !== 100) {
+            throw new Error ('method "rollDice" received a invalid number')
+        }
+        return (Math.floor(Math.random() * (diceSize - 1 + 1) + 1 ))
+    }
+
     attributeModifier(atr){
         return Math.floor((atr / 2) - 5);
     }
