@@ -20,6 +20,10 @@ class Actor {
     rollD6() {
         return (Math.floor(Math.random() * (6 - 1 + 1) + 1));
     }
+
+    attributeModifier(atr){
+        return Math.floor((atr / 2) - 5);
+    }
 }
 
 //* Player Actor Ancestries
@@ -64,10 +68,10 @@ class Warrior extends Human {
     }
 
     heavySlash(target){
-        if (this.atrSTR + this.roll20() >= target.atrDEX) {
-            return this.rollD6() + this.atrSTR;
+        if (this.attributeModifier(this.atrSTR) + this.roll20() >= target.atrDEX) {
+            return this.rollD6() + this.attributeModifier(this.atrSTR);
         }
-        return 0;
+        return 0; //? Use 0 as Boolean for MISS
     }
 }
 
