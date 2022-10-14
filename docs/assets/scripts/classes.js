@@ -70,8 +70,9 @@ class Warrior extends Human {
     heavySlash(target){
         if (this.attributeModifier(this.atrSTR) + this.roll20() >= target.atrDEX) {
             return this.rollD6() + this.attributeModifier(this.atrSTR);
+        } else {
+            return 0; //? Use 0 as Boolean for MISS
         }
-        return 0; //? Use 0 as Boolean for MISS
     }
 }
 
