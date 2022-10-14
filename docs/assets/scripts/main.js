@@ -4,10 +4,10 @@
 class Actor {
     constructor(atrHP, atrSTR, atrDEX, atrINT){
         this.actorName = "";
-        this.atrHP = atrHP;
-        this.atrSTR = atrSTR;
-        this.atrDEX = atrDEX;
-        this.atrINT = atrINT;
+        this.atrHP = 12;
+        this.atrSTR = 10;
+        this.atrDEX = 10;
+        this.atrINT = 10;
     }
 
     receiveDamage(damage) {
@@ -56,4 +56,22 @@ class Warrior extends Human {
 }
 
 //* Enemy Actor Ancestries
+// base Slime (Green Slime aka Common Slime)
 
+class BaseSlime extends Actor {
+    constructor(atrHP, atrSTR, atrDEX, atrINT) {
+        super(atrHP, atrSTR, atrDEX, atrINT)
+        this.actorName = "Green Slime";
+        this.className = "Common Slime";
+        this.slimeAtrBonus = {
+            slimeBonusHP: -7,
+            slimeBonusSTR: -2,
+            slimeBonusDEX: 2,
+            slimeBonusINT: -5,
+        };
+        this.atrHP = atrHP + slimeBonusHP;
+        this.atrSTR = atrSTR + slimeBonusSTR;
+        this.atrDEX = atrDEX + slimeBonusDEX;
+        this.atrINT = atrINT + slimeBonusINT;
+    }
+}
