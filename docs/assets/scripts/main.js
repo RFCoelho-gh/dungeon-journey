@@ -81,7 +81,7 @@ window.onload = () => {
 
     function printHeroStats (player) {
         console.log(`You printed ${player.actorName}`)
-        lateralCtx.font = '16px monospace';
+        lateralCtx.font = '15.5px georgia';
         lateralCtx.fillStyle = 'black';
         lateralCtx.fillText(`Name: ${player.actorName}`, 8, 50);
         lateralCtx.fillText(`Class: ${player.className}`, 8, 75);
@@ -123,5 +123,4 @@ window.onload = () => {
             lateralCtx.fillText(`Intelligence: ${player.atrINT} (-${player.attributeModifier(player.atrINT)})`, 8, 175);
         }
     };
-
 }
