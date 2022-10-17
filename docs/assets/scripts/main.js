@@ -12,7 +12,7 @@ window.onload = () => {
             console.log("Start Button was clicked with value 0")
             heroCreator();
             startGame();
-            gameStarted++;
+            
         } else if (gameStarted >= 1) {
             console.log("Start Button was clicked with value above 0")
         }
@@ -33,12 +33,8 @@ window.onload = () => {
             if (chosenClass === "Warrior" || !chosenClass) {
                 // HUMAN WARRIOR
                 const player = new HumanWarrior(heroName)
-                console.log(player);
-                console.log(player.actorName);
-                console.log(player.className)
-                console.log(player.atrHP);
-                printStats(player);
-
+                printHeroStats(player);
+                player.drawActor(player.color);
             }
             if (chosenClass === "Ranger") {
                 // HUMAN RANGER
@@ -78,9 +74,10 @@ window.onload = () => {
     }
 
     function startGame () {
+        gameStarted++;
     };
 
-    function printStats (player) {
+    function printHeroStats (player) {
         console.log(`You printed ${player.actorName}`)
         lateralCtx.font = '16px monospace';
         lateralCtx.fillStyle = 'black';

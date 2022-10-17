@@ -12,6 +12,10 @@ class Actor {
         this.atrSTR = baseSTR;
         this.atrDEX = baseDEX;
         this.atrINT = baseINT;
+        this.color = "black";
+        this.friendly = false;
+        this.width = 50;
+        this.height = 50;
     }
 
     receiveDamage(damage) {
@@ -31,14 +35,23 @@ class Actor {
     attributeModifier(atr){
         return Math.floor((atr / 2) - 5);
     }
+
+    drawActor(color){
+        mainCtx.fillStyle = color;
+        if (this.friendly === false) {
+            mainCtx.fillRect(1000, 400, this.width, this.height);
+        } else {
+            mainCtx.fillRect(200, 400, this.width, this.height);
+        }
+    }
 }
 
 //* Player Actor Ancestries
 // Human
 
 class Human extends Actor {
-    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT) {
-        super(atrHP, atrSTR, atrDEX, atrINT)
+    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT, friendly, width, height) {
+        super(atrHP, atrSTR, atrDEX, atrINT, friendly, width, height)
         this.actorName = actorName;
         this.humanAtrBonus = {
             humanBonusHP: 2,
@@ -50,6 +63,7 @@ class Human extends Actor {
         this.atrSTR = atrSTR + this.humanAtrBonus.humanBonusSTR;
         this.atrDEX = atrDEX + this.humanAtrBonus.humanBonusDEX;
         this.atrINT = atrINT + this.humanAtrBonus.humanBonusINT;
+        this.friendly = true;
     }
 }
 
@@ -59,8 +73,8 @@ class Human extends Actor {
 
 // Human Warrior
 class HumanWarrior extends Human {
-    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT) {
-        super(atrHP, atrSTR, atrDEX, atrINT)
+    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT, friendly, width, height) {
+        super(atrHP, atrSTR, atrDEX, atrINT, width, height, friendly, width, height)
         this.warriorAtrBonus = {
             warriorBonusHP: 6,
             warriorBonusSTR: 4,
@@ -105,7 +119,7 @@ class HumanWarrior extends Human {
 
 class BaseSlime extends Actor {
     constructor(atrHP, atrSTR, atrDEX, atrINT) {
-        super(atrHP, atrSTR, atrDEX, atrINT)
+        super(atrHP, atrSTR, atrDEX, atrINT, friendly, width, height)
         this.actorName = "Green Slime";
         this.className = "Common Slime";
         this.slimeAtrBonus = {
