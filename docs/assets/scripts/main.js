@@ -19,7 +19,7 @@ window.onload = () => {
     function heroCreator() {
         console.log("heroCreator was invoked!")
         let heroName = document.getElementById("heroName").value;
-        if (typeof(heroName) !== 'string' || heroName.length >= 9 || heroName.length == 0) {
+        if (heroName.includes(1) || heroName.includes(2) || heroName.includes(3) || heroName.includes(4) || heroName.includes(5) || heroName.includes(6) || heroName.includes(7) || heroName.includes(8) || heroName.includes(9) || heroName.includes(0) || heroName.length >= 9 || heroName.length === 0) {
             heroName = "Hero";
         }
         let chosenAncestry = document.getElementById("chosenAncestry").value;
