@@ -34,7 +34,7 @@ window.onload = () => {
                 // HUMAN WARRIOR
                 const player = new HumanWarrior(heroName)
                 printHeroStats(player);
-                player.drawActor(player.color);
+                player.drawActor(player.color, player.actorName);
             }
             if (chosenClass === "Ranger") {
                 // HUMAN RANGER
@@ -75,6 +75,8 @@ window.onload = () => {
 
     function startGame () {
         gameStarted++;
+        isPlayerTurn = true;
+        isEnemyTurn = false;
     };
 
     function printHeroStats (player) {

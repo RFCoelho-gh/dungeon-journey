@@ -36,13 +36,20 @@ class Actor {
         return Math.floor((atr / 2) - 5);
     }
 
-    drawActor(color){
+    drawActor(color, name){
+        console.log("drawActor Method was invoked!")
         mainCtx.fillStyle = color;
         if (this.friendly === false) {
             mainCtx.fillRect(1000, 400, this.width, this.height);
+            mainCtx.fillText()
         } else {
             mainCtx.fillRect(200, 400, this.width, this.height);
+            mainCtx.fillStyle = "black";
+            mainCtx.font = '20px fantasy'
+            mainCtx.fillText(`${name}`, 205, 350);
         }
+        mainCtx.fillStyle = "black";
+
     }
 }
 
