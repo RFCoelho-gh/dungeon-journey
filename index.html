@@ -10,20 +10,36 @@
 <body>
     <div id="divCanvas">
         <div id="divMenuButtons">
-            <div>
-                <button type="button">Start !</button>
+            <div class="selectionForm">
+                <form action="">
+                    <label for="ancestrySelector">Ancestry</label>
+                    <input list="ancestry" placeholder="Select Ancestry">
+                    <datalist id="ancestry">
+                        <option value="Human"></option>
+                        <option value="Elf"></option>
+                        <option value="Dwarf"></option>
+                    </datalist><br>
+                    <label for="classSelector">Class</label>
+                    <input list="class" placeholder="Select Hero Class">
+                    <datalist id="class">
+                        <option value="Warrior"></option>
+                        <option value="Ranger"></option>
+                        <option value="Wizard"></option>
+                    </datalist>
+                    <button id="mainStart-btn" type="button">Start!</button>
+                </form>
             </div>
             <div class="btnRow">
-                <button>A</button>
-                <button>B</button>
+                <button id="optionA-btn">A</button>
+                <button id="optionB-btn">B</button>
             </div>
             <div class="btnRow">
-                <button>C</button>
-                <button>D</button>
+                <button id="optionC-btn">C</button>
+                <button id="optionD-btn">D</button>
             </div>
             <div class="btnRow">
-                <button>E</button>
-                <button>F</button>
+                <button id="optionE-btn">E</button>
+                <button id="optionF-btn">F</button>
             </div>
         </div>
         <canvas id="mainCanvas" style="border: 4px solid rgb(91, 1, 1)" width="1200" height="800"></canvas>
@@ -33,6 +49,7 @@
         <p><span class="fakeH1">Dungeon Journey: </span><span class="fakeH2">  a D&D inspired JS game</span></p>
     </div>
 
+    <script src="/docs/assets/scripts/counters.js"></script>
     <script src="/docs/assets/scripts/classes.js"></script>
     <script src="/docs/assets/scripts/main.js"></script>
 </body>

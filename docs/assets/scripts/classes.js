@@ -53,7 +53,7 @@ class Human extends Actor {
 
 
 // Human Warrior
-class Warrior extends Human {
+class HumanWarrior extends Human {
     constructor(atrHP, atrSTR, atrDEX, atrINT) {
         super(atrHP, atrSTR, atrDEX, atrINT)
         this.warriorAtrBonus = {

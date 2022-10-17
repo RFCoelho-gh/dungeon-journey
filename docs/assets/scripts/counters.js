@@ -1,0 +1,2 @@
+
+const gameStarted = 0;
