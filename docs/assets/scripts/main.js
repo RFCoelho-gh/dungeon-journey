@@ -1,6 +1,8 @@
 
 //* MAIN STARTS HERE //
 
+const game = new Game;
+
 window.onload = () => {
     document.getElementById("mainStart-btn").onclick = () => {
         if (gameStarted === 0) {
@@ -138,6 +140,7 @@ function alphaChecking () {
 /*         mainCtx.clearRect(0, 0, mainCanvas.clientWidth, mainCanvas.height); */
 /*         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName); */
         alphaEnemy.drawActor(alphaEnemy.color, alphaEnemy.actorName);
+        game.printEnemyStats(alphaEnemy);
         alphaTrigger++;
         console.log("Alpha trigger has been pushed to 2+")
     }
