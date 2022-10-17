@@ -16,16 +16,18 @@ class BattleEncounter {
     }
 
     passTurn(){
-        if (this.isPlayerTurn === true && this.isEnemyTurn === false) {
+        if (this.isPlayerTurn && !this.isEnemyTurn) {
             this.isPlayerTurn = false;
             this.isEnemyTurn = true;
-        } else if (this.isEnemyTurn === true && this.isPlayerTurn === false) {
+        } else if (this.isEnemyTurn && !this.isPlayerTurn) {
             this.isEnemyTurn = true;
             this.isEnemyTurn = false;
         }
     }
 
     executePlayerChoice(){
-        
+        if (this.isPlayerTurn){
+            
+        }
     }
 }

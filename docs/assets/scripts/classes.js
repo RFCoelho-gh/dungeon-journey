@@ -100,7 +100,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
-                descriptionHeavySlash: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${this.warriorActions[0].abilityDamageDice}+${this.attributeModifier(this.atrSTR)} points of ${this.warriorActions[0].abilityDamageType} damage.`,
+                descriptionHeavySlash: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
                         return this.rollDice(this.warriorActions[0].abilityDamageDice) + this.attributeModifier(this.atrSTR);
@@ -114,7 +114,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Dexterity",
                 abilityDamageDice: 6,
                 abilityDamageType: "piercing",
-                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.warriorActions[1].abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.warriorActions[1].abilityDamageType} damage.`,
+                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
                         return this.rollDice(this.warriorActions[1].abilityDamageDice) + this.attributeModifier(this.atrSTR);
@@ -128,7 +128,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Intelligence",
                 abilityDamageDice: 4,
                 abilityDamageType: "slashing",
-                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.warriorActions[2].abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.warriorActions[2].abilityDamageType} damage.`,
+                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
                         return this.rollDice(this.warriorActions[2].abilityDamageDice) + this.attributeModifier(this.atrINT);
@@ -176,23 +176,4 @@ class BaseSlime extends Actor {
             return 0; //? Use 0 as Boolean for MISS
         }
     }
-}
-
-//* Battle Class (Battle Encounter Governor)
-
-class BattleEncounter {
-    constructor(){
-        this.turnCounter = 1;
-        this.leftActor = [];
-        this.rightActor = [];
-    }
-
-    addPlayerActor(playerActor){
-        this.leftActor.push(playerActor);
-    }
-
-    addEnemyActor(enemyActor){
-        this.rightActor.push(enemyActor);
-    }
-
 }
