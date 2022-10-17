@@ -159,15 +159,37 @@ class BaseSlime extends Actor {
         this.atrSTR = atrSTR + this.slimeAtrBonus.slimeBonusSTR;
         this.atrDEX = atrDEX + this.slimeAtrBonus.slimeBonusDEX;
         this.atrINT = atrINT + this.slimeAtrBonus.slimeBonusINT;
+        this.abilities = [
+            {
+                abilityName: "Slimy Slam",
+                abilityAttribute: "Strength",
+                abilityDamageDice: 4,
+                abilityDamageType: "acid",
+                descriptionSlimySlam: `${this.actorName} attacks their enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
+                execute(target){ // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
+                        return this.rollDice(this.abilities[0].abilityDamageDice) + this.attributeModifier(this.atrSTR);
+                    } else {
+                        return 0; //? Use 0 as Boolean for MISS
+                    }
+                },
+            },
+            {
+                abilityName: "Acid Splash",
+                abilityAttribute: "Dexterity",
+                abilityDamageDice: 3,
+                abilityDamageType: "acid",
+                descriptionAcidSplash: `${this.actorName} attacks their enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
+                execute(target){ // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
+                        return this.rollDice(this.abilities[1].abilityDamageDice) + this.attributeModifier(this.atrSTR);
+                    } else {
+                        return 0; //? Use 0 as Boolean for MISS
+                    }
+                },
+            }
+        ]
     }
-
-    slimySlam(target) { // RETURNS DAMAGE VALUE
-        if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
-            return this.rollDice(4) + this.attributeModifier(this.atrSTR);
-        } else {
-            return 0; //? Use 0 as Boolean for MISS
-        }
-    };
 
     acidSplash(target) {
         if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {

@@ -9,3 +9,5 @@ const mainCtx = mainCanvas.getContext("2d");
 
 const lateralCanvas = document.getElementById("lateralCanvas");
 const lateralCtx = lateralCanvas.getContext("2d");
+
+let alphaTrigger = 0;

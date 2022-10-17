@@ -7,6 +7,10 @@ window.onload = () => {
             console.log("Start Button was clicked with value 0")
             heroCreator();
             startGame();
+            setTimeout(() => {
+                alphaTrigger++;
+                console.log("Alpha Trigger increased to 1.")
+              }, "1000");
         } else if (gameStarted >= 1) {
             console.log("Start Button was clicked with value above 0")
         }
@@ -118,3 +122,6 @@ window.onload = () => {
         }
     };
 }
+
+
+//* ALPHA ENCOUNTER STARTS HERE
