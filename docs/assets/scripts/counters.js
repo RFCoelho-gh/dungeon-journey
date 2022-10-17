@@ -1,2 +1,2 @@
 
-const gameStarted = 0;
+let gameStarted = 0;

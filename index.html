@@ -12,20 +12,22 @@
         <div id="divMenuButtons">
             <div class="selectionForm">
                 <form action="">
-                    <label for="ancestrySelector">Ancestry</label>
-                    <input list="ancestry" placeholder="Select Ancestry">
-                    <datalist id="ancestry">
+                    <label for="heroName">Name:</label>
+                    <input type="text" id="heroName" name="heroName" placeholder="Your Name"><br>
+                    <label for="ancestrySelector">Ancestry:</label>
+                    <input list="chosenAncestry" placeholder="Select Ancestry">
+                    <datalist id="chosenAncestry">
                         <option value="Human"></option>
                         <option value="Elf"></option>
                         <option value="Dwarf"></option>
                     </datalist><br>
-                    <label for="classSelector">Class</label>
-                    <input list="class" placeholder="Select Hero Class">
-                    <datalist id="class">
+                    <label for="classSelector">Class:</label>
+                    <input list="chosenClass" placeholder="Select Hero Class">
+                    <datalist id="chosenClass">
                         <option value="Warrior"></option>
                         <option value="Ranger"></option>
                         <option value="Wizard"></option>
-                    </datalist>
+                    </datalist><br>
                     <button id="mainStart-btn" type="button">Start!</button>
                 </form>
             </div>

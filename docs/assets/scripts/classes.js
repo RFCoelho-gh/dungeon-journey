@@ -1,12 +1,17 @@
 //* base Actor
 
+let baseHP = 12;
+let baseSTR = 10;
+let baseDEX = 10;
+let baseINT = 10;
+
 class Actor {
     constructor(){
         this.actorName = "";
-        this.atrHP = 12;
-        this.atrSTR = 10;
-        this.atrDEX = 10;
-        this.atrINT = 10;
+        this.atrHP = baseHP;
+        this.atrSTR = baseSTR;
+        this.atrDEX = baseDEX;
+        this.atrINT = baseINT;
     }
 
     receiveDamage(damage) {
@@ -32,19 +37,19 @@ class Actor {
 // Human
 
 class Human extends Actor {
-    constructor(atrHP, atrSTR, atrDEX, atrINT) {
+    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT) {
         super(atrHP, atrSTR, atrDEX, atrINT)
-        this.actorName = "Hero";
+        this.actorName = actorName;
         this.humanAtrBonus = {
             humanBonusHP: 2,
             humanBonusSTR: 1,
             humanBonusDEX: 1,
             humanBonusINT: 1,
         };
-        this.atrHP = atrHP + humanBonusHP;
-        this.atrSTR = atrSTR + humanBonusSTR;
-        this.atrDEX = atrDEX + humanBonusDEX;
-        this.atrINT = atrINT + humanBonusINT;
+        this.atrHP = atrHP + this.humanAtrBonus.humanBonusHP;
+        this.atrSTR = atrSTR + this.humanAtrBonus.humanBonusSTR;
+        this.atrDEX = atrDEX + this.humanAtrBonus.humanBonusDEX;
+        this.atrINT = atrINT + this.humanAtrBonus.humanBonusINT;
     }
 }
 
@@ -54,7 +59,7 @@ class Human extends Actor {
 
 // Human Warrior
 class HumanWarrior extends Human {
-    constructor(atrHP, atrSTR, atrDEX, atrINT) {
+    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT) {
         super(atrHP, atrSTR, atrDEX, atrINT)
         this.warriorAtrBonus = {
             warriorBonusHP: 6,
@@ -62,11 +67,12 @@ class HumanWarrior extends Human {
             warriorBonusDEX: 2,
             warriorBonusINT: -2,
         };
+        this.actorName = actorName;
         this.className = "Human Warrior";
-        this.atrHP = atrHP + warriorBonusHP;
-        this.atrSTR = atrSTR + warriorBonusSTR;
-        this.atrDEX = atrDEX + warriorBonusDEX;
-        this.atrINT = atrINT + warriorBonusINT;
+        this.atrHP = baseHP + this.humanAtrBonus.humanBonusHP + this.warriorAtrBonus.warriorBonusHP;
+        this.atrSTR = baseSTR + this.humanAtrBonus.humanBonusSTR + this.warriorAtrBonus.warriorBonusSTR;
+        this.atrDEX = baseDEX + this.humanAtrBonus.humanBonusDEX + this.warriorAtrBonus.warriorBonusDEX;
+        this.atrINT = baseINT + this.humanAtrBonus.humanBonusINT + this.warriorAtrBonus.warriorBonusINT;
     }
 
     heavySlash(target){ // RETURNS DAMAGE VALUE
@@ -108,10 +114,10 @@ class BaseSlime extends Actor {
             slimeBonusDEX: 2,
             slimeBonusINT: -5,
         };
-        this.atrHP = atrHP + slimeBonusHP;
-        this.atrSTR = atrSTR + slimeBonusSTR;
-        this.atrDEX = atrDEX + slimeBonusDEX;
-        this.atrINT = atrINT + slimeBonusINT;
+        this.atrHP = atrHP + this.slimeAtrBonus.slimeBonusHP;
+        this.atrSTR = atrSTR + this.slimeAtrBonus.slimeBonusSTR;
+        this.atrDEX = atrDEX + this.slimeAtrBonus.slimeBonusDEX;
+        this.atrINT = atrINT + this.slimeAtrBonus.slimeBonusINT;
     }
 
     slimySlam(target) { // RETURNS DAMAGE VALUE
