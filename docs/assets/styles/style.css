@@ -1,12 +1,49 @@
+* {
+    font-family: fantasy;
+}
+
 html {
     background-color: beige;
     font-family: fantasy;
 }
 
-h1 {
+#divCanvas {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0px 5px 0px 5px;
+    border: 0px 5px 0px 5px;
+}
+
+button {
+    font-size: 3rem;
+}
+
+#buttonRow {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+}
+
+canvas {
+    background: white;
+}
+
+.fakeH1 {
+    font-size: 2rem;
+    font-weight: bolder;
     color: rgb(91, 1, 1);
 }
 
-h3 {
+.fakeH2 {
+    font-size: 1.8rem;
+    font-weight: bolder;
     color: #342c1d;
+}
+
+#holdingTitle {
+    text-align: center;
 }

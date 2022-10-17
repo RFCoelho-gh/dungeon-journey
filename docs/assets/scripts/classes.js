@@ -13,19 +13,11 @@ class Actor {
         this.atrHP = this.atrHP - damage;
     }
 
-    rollD20() {
-        return (Math.floor(Math.random() * (20 - 1 + 1) + 1));
-    }
-
-    rollD6() {
-        return (Math.floor(Math.random() * (6 - 1 + 1) + 1));
-    }
-
     rollDice(diceSize) {
         if (typeof diceSize !== number ) {
             throw new Error ('method "rollDice" received a non-number as an Argument')
         }
-        if (diceSize !== 4 || diceSize !== 6 || diceSize !== 10 || diceSize !== 12 || diceSize !== 100) {
+        if (diceSize !== 2 || diceSize !== 3 || diceSize !== 4 || diceSize !== 6 || diceSize !== 10 || diceSize !== 12 || diceSize !== 100) {
             throw new Error ('method "rollDice" received a invalid number')
         }
         return (Math.floor(Math.random() * (diceSize - 1 + 1) + 1 ))
@@ -44,7 +36,7 @@ class Human extends Actor {
         super(atrHP, atrSTR, atrDEX, atrINT)
         this.actorName = "Hero";
         this.humanAtrBonus = {
-            humanBonusHP: 1,
+            humanBonusHP: 2,
             humanBonusSTR: 1,
             humanBonusDEX: 1,
             humanBonusINT: 1,
@@ -65,9 +57,9 @@ class Warrior extends Human {
     constructor(atrHP, atrSTR, atrDEX, atrINT) {
         super(atrHP, atrSTR, atrDEX, atrINT)
         this.warriorAtrBonus = {
-            warriorBonusHP: 4,
-            warriorBonusSTR: 2,
-            warriorBonusDEX: 0,
+            warriorBonusHP: 6,
+            warriorBonusSTR: 4,
+            warriorBonusDEX: 2,
             warriorBonusINT: -2,
         };
         this.className = "Human Warrior";
@@ -77,9 +69,25 @@ class Warrior extends Human {
         this.atrINT = atrINT + warriorBonusINT;
     }
 
-    heavySlash(target){
-        if (this.attributeModifier(this.atrSTR) + this.roll20() >= target.atrDEX) {
-            return this.rollD6() + this.attributeModifier(this.atrSTR);
+    heavySlash(target){ // RETURNS DAMAGE VALUE
+        if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
+            return this.rollDice(8) + this.attributeModifier(this.atrSTR);
+        } else {
+            return 0; //? Use 0 as Boolean for MISS
+        }
+    }
+
+    quickJab(target){ // RETURNS DAMAGE VALUE
+        if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
+            return this.rollDice(6) + this.attributeModifier(this.atrDEX);
+        } else {
+            return 0; //? Use 0 as Boolean for MISS
+        }
+    }
+
+    feintingRiposte(target){ // RETURNS DAMAGE VALUE
+        if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
+            return this.rollDice(4) + this.attributeModifier(this.atrINT);
         } else {
             return 0; //? Use 0 as Boolean for MISS
         }
@@ -104,6 +112,22 @@ class BaseSlime extends Actor {
         this.atrSTR = atrSTR + slimeBonusSTR;
         this.atrDEX = atrDEX + slimeBonusDEX;
         this.atrINT = atrINT + slimeBonusINT;
+    }
+
+    slimySlam(target) { // RETURNS DAMAGE VALUE
+        if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
+            return this.rollDice(4) + this.attributeModifier(this.atrSTR);
+        } else {
+            return 0; //? Use 0 as Boolean for MISS
+        }
+    };
+
+    acidSplash(target) {
+        if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
+            return this.rollDice(3) + this.attributeModifier(this.atrSTR);
+        } else {
+            return 0; //? Use 0 as Boolean for MISS
+        }
     }
 }
 
