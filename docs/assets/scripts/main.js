@@ -37,7 +37,8 @@ window.onload = () => {
                 console.log(player.actorName);
                 console.log(player.className)
                 console.log(player.atrHP);
-                
+                printStats(player);
+
             }
             if (chosenClass === "Ranger") {
                 // HUMAN RANGER
@@ -77,6 +78,51 @@ window.onload = () => {
     }
 
     function startGame () {
+    };
+
+    function printStats (player) {
+        console.log(`You printed ${player.actorName}`)
+        lateralCtx.font = '16px monospace';
+        lateralCtx.fillStyle = 'black';
+        lateralCtx.fillText(`Name: ${player.actorName}`, 8, 50);
+        lateralCtx.fillText(`Class: ${player.className}`, 8, 75);
+        lateralCtx.fillText(`Hit Points: ${player.atrHP}`, 8, 100);
+
+        // COLOR CONDITIONAL FOR STRENGTH
+        if(player.attributeModifier(player.atrSTR) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Strength: ${player.atrSTR} (+${player.attributeModifier(player.atrSTR)})`, 8, 125);
+        } else if (player.attributeModifier(player.atrSTR < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Strength: ${player.atrSTR} (${player.attributeModifier(player.atrSTR)})`, 8, 125);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Strength: ${player.atrSTR} (-${player.attributeModifier(player.atrSTR)})`, 8, 125);
+        }
+
+        // COLOR CONDITIONAL FOR DEXTERITIY
+        if(player.attributeModifier(player.atrDEX) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Dexterity: ${player.atrDEX} (+${player.attributeModifier(player.atrDEX)})`, 8, 150);
+        } else if (player.attributeModifier(player.atrDEX < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Dexterity: ${player.atrDEX} (${player.attributeModifier(player.atrDEX)})`, 8, 150);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Dexterity: ${player.atrDEX} (-${player.attributeModifier(player.atrDEX)})`, 8, 150);
+        }
+
+        // COLOR CONDITIONAL FOR INTELLIGENCE
+        if(player.attributeModifier(player.atrINT) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Intelligence: ${player.atrINT} (+${player.attributeModifier(player.atrINT)})`, 8, 175);
+        } else if (player.attributeModifier(player.atrINT < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Intelligence: ${player.atrINT} (${player.attributeModifier(player.atrINT)})`, 8, 175);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Intelligence: ${player.atrINT} (-${player.attributeModifier(player.atrINT)})`, 8, 175);
+        }
     };
 
 }
