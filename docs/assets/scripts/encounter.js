@@ -25,6 +25,28 @@ class BattleEncounter {
         }
     }
 
+    fetchEnemy(array){
+        let max = array.length - 1;
+        let min = 1;
+        let rng = Math.floor(Math.random() * (max - min + 1) + min);
+        if (array[rng] === 0) { // GREEN SLIME
+            return new BaseSlime;
+        } else if (array[rng] === 1) {
+/*             fetchedEnemy = new Skeleton; */
+        } else if (array[rng] === 2) {
+/*             fetchedEnemy = new Orc; */
+        }
+    }
+
+    kickoffEncounter(enemyVar){
+        this.startEncounter();
+        // DRAWING
+        /* context.clearRect(0, 0, canvas.width, canvas.height); */
+        mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+/*         player.drawActor (playerVar.color, playerVar.actorName); */
+        enemyVar.drawActor(enemyVar.color, enemyVar.actorName);
+    }
+
     executePlayerChoice(){
         if (this.isPlayerTurn){
             

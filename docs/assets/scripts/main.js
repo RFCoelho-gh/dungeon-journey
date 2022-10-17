@@ -30,9 +30,9 @@ window.onload = () => {
         if (chosenAncestry === "Human" || !chosenAncestry) {
             if (chosenClass === "Warrior" || !chosenClass) {
                 // HUMAN WARRIOR
-                const player = new HumanWarrior(heroName)
-                printHeroStats(player);
-                player.drawActor(player.color, player.actorName);
+                var alphaPlayer = new HumanWarrior(heroName)
+                printHeroStats(alphaPlayer);
+                alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName);
             }
             if (chosenClass === "Ranger") {
                 // HUMAN RANGER
@@ -125,3 +125,22 @@ window.onload = () => {
 
 
 //* ALPHA ENCOUNTER STARTS HERE
+
+
+
+function alphaChecking () {
+    if (alphaTrigger === 1){
+        clearInterval(alphaChecker);
+        const alphaEncounter = new BattleEncounter;
+        /* future conditionals for enemy variance */
+        const alphaEnemy = new BaseSlime;
+        alphaEncounter.startEncounter();
+/*         mainCtx.clearRect(0, 0, mainCanvas.clientWidth, mainCanvas.height); */
+/*         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName); */
+        alphaEnemy.drawActor(alphaEnemy.color, alphaEnemy.actorName);
+        alphaTrigger++;
+        console.log("Alpha trigger has been pushed to 2+")
+    }
+}
+
+const alphaChecker = setInterval(alphaChecking, 1000 / 60);

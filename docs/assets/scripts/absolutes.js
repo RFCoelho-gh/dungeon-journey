@@ -11,3 +11,5 @@ const lateralCanvas = document.getElementById("lateralCanvas");
 const lateralCtx = lateralCanvas.getContext("2d");
 
 let alphaTrigger = 0;
+
+const arrayOfEnemies = ["GreenSlime", "Skeleton", "Orc"]

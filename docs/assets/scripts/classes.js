@@ -41,7 +41,7 @@ class Actor {
         mainCtx.fillStyle = color;
         if (this.friendly === false) {
             mainCtx.fillRect(1000, 400, this.width, this.height);
-            mainCtx.fillText()
+            mainCtx.fillText(`${name}`, 1005, 350);
         } else {
             mainCtx.fillRect(200, 400, this.width, this.height);
             mainCtx.fillStyle = "black";
@@ -145,7 +145,7 @@ class HumanWarrior extends Human {
 // base Slime (Green Slime aka Common Slime)
 
 class BaseSlime extends Actor {
-    constructor(atrHP, atrSTR, atrDEX, atrINT) {
+    constructor(atrHP, atrSTR, atrDEX, atrINT, friendly, width, height) {
         super(atrHP, atrSTR, atrDEX, atrINT, friendly, width, height)
         this.actorName = "Green Slime";
         this.className = "Common Slime";
@@ -159,6 +159,7 @@ class BaseSlime extends Actor {
         this.atrSTR = atrSTR + this.slimeAtrBonus.slimeBonusSTR;
         this.atrDEX = atrDEX + this.slimeAtrBonus.slimeBonusDEX;
         this.atrINT = atrINT + this.slimeAtrBonus.slimeBonusINT;
+        this.color = "green";
         this.abilities = [
             {
                 abilityName: "Slimy Slam",
