@@ -1,10 +1,5 @@
-//* Main Script File
 
-const mainCanvas = document.getElementById("mainCanvas");
-const mainCtx = mainCanvas.getContext("2d");
-
-const lateralCanvas = document.getElementById("lateralCanvas");
-const lateralCtx = lateralCanvas.getContext("2d");
+//* MAIN STARTS HERE //
 
 window.onload = () => {
     document.getElementById("mainStart-btn").onclick = () => {
@@ -12,7 +7,6 @@ window.onload = () => {
             console.log("Start Button was clicked with value 0")
             heroCreator();
             startGame();
-            
         } else if (gameStarted >= 1) {
             console.log("Start Button was clicked with value above 0")
         }

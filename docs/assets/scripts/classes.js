@@ -94,30 +94,50 @@ class HumanWarrior extends Human {
         this.atrSTR = baseSTR + this.humanAtrBonus.humanBonusSTR + this.warriorAtrBonus.warriorBonusSTR;
         this.atrDEX = baseDEX + this.humanAtrBonus.humanBonusDEX + this.warriorAtrBonus.warriorBonusDEX;
         this.atrINT = baseINT + this.humanAtrBonus.humanBonusINT + this.warriorAtrBonus.warriorBonusINT;
-    }
-
-    heavySlash(target){ // RETURNS DAMAGE VALUE
-        if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
-            return this.rollDice(8) + this.attributeModifier(this.atrSTR);
-        } else {
-            return 0; //? Use 0 as Boolean for MISS
-        }
-    }
-
-    quickJab(target){ // RETURNS DAMAGE VALUE
-        if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
-            return this.rollDice(6) + this.attributeModifier(this.atrDEX);
-        } else {
-            return 0; //? Use 0 as Boolean for MISS
-        }
-    }
-
-    feintingRiposte(target){ // RETURNS DAMAGE VALUE
-        if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
-            return this.rollDice(4) + this.attributeModifier(this.atrINT);
-        } else {
-            return 0; //? Use 0 as Boolean for MISS
-        }
+        this.warriorActions = [ // ARRAY OF WARRIOR ABILITIES
+            { // INDEX 0
+                abilityName: "Heavy Slash",
+                abilityAttribute: "Strength",
+                abilityDamageDice: 8,
+                abilityDamageType: "slashing",
+                descriptionHeavySlash: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${this.warriorActions[0].abilityDamageDice}+${this.attributeModifier(this.atrSTR)} points of ${this.warriorActions[0].abilityDamageType} damage.`,
+                execute(target){ // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
+                        return this.rollDice(this.warriorActions[0].abilityDamageDice) + this.attributeModifier(this.atrSTR);
+                    } else {
+                        return 0; //? Use 0 as Boolean for MISS
+                    }
+                },
+            },
+            {
+                abilityName: "Quick Jab",
+                abilityAttribute: "Dexterity",
+                abilityDamageDice: 6,
+                abilityDamageType: "piercing",
+                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.warriorActions[1].abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.warriorActions[1].abilityDamageType} damage.`,
+                execute(target) { // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
+                        return this.rollDice(this.warriorActions[1].abilityDamageDice) + this.attributeModifier(this.atrSTR);
+                    } else {
+                        return 0;
+                    }
+                },
+            },
+            {
+                abilityName: "Feinting Riposte",
+                abilityAttribute: "Intelligence",
+                abilityDamageDice: 4,
+                abilityDamageType: "slashing",
+                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.warriorActions[2].abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.warriorActions[2].abilityDamageType} damage.`,
+                execute(target) { // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
+                        return this.rollDice(this.warriorActions[2].abilityDamageDice) + this.attributeModifier(this.atrINT);
+                    } else {
+                        return 0;
+                    }
+                },
+            },
+        ];
     }
 }
 
