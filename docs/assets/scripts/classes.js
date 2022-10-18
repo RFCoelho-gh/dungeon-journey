@@ -164,6 +164,8 @@ class BaseSlime extends Actor {
         this.atrDEX = baseDEX + this.slimeAtrBonus.slimeBonusDEX;
         this.atrINT = baseINT + this.slimeAtrBonus.slimeBonusINT;
         this.color = "green";
+        this.backgroundX = 0;
+        this.backgroundY = 0;
         this.abilities = [
             {
                 abilityName: "Slimy Slam",

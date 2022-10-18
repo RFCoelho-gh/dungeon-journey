@@ -21,7 +21,7 @@ window.onload = () => {
             setTimeout(() => {
                 alphaTrigger++;
                 console.log("Alpha Trigger increased to 1.")
-              }, "1000");
+              }, "10");
         } else if (gameStarted >= 1) {
             console.log("Start Button was clicked with value above 0")
         }
@@ -105,6 +105,7 @@ function alphaChecking () {
         console.log(alphaEnemy);
         alphaEncounter.createChatBox();
         alphaEncounter.createDescripText(`The adventurer ${alphaPlayer.actorName} encounters a wandering ${alphaEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${alphaPlayer.actorName}, the ${alphaPlayer.className}!`);
+        alphaEncounter.drawBackground();
     }
 }
 

@@ -50,6 +50,17 @@ class BattleEncounter {
         }
     };
 
+    drawBackground() {
+        let alphaBackground = new Image ();
+        alphaBackground.src = 'docs/assets/scripts/ff2_backgrounds.png'
+        
+        mainCtx.drawImage(alphaBackground, 0, 0);
+        mainCanvas.style.backgroundSize = "1200px 800px";
+        mainCanvas.style.backgroundRepeat = "no-repeat";
+        mainCanvas.style.backgroundImage = "url(docs/assets/images/ff2_forest_background.png)";
+        console.log("drawBackground was invoked!")
+    }
+
     fetchEnemy(array){
         let max = array.length - 1;
         let min = 1;
