@@ -1,4 +1,8 @@
 
+
+
+
+
 //* MAIN STARTS HERE //
 
 const game = new Game;
@@ -90,6 +94,5 @@ function alphaChecking () {
 //* END OF CONTROLS
 
 const alphaChecker = setInterval(alphaChecking, 1000 / 60);
-
 
 

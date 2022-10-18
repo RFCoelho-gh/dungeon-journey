@@ -55,8 +55,20 @@ class Game {
         }
     }
 
+    printBothStats (player, enemy) {
+        lateralCtx.clearRect(0, 0, 200, 800);
+        this.printHeroStats(player);
+        this.printEnemyStats(enemy);
+    }
+    
+    printSpeed (player, enemy) {
+        mainCtx.font = "25px fantasy";
+        mainCtx.fillStyle = "black";
+        mainCtx.fillText(`${player.atrSPD}`, 205, 250);
+        mainCtx.fillText(`${enemy.atrSPD}`, 925, 250);
+    }
+
     printHeroStats (actorEntry) {
-        console.log(`You printed the stats of ${actorEntry.actorName}`);
         lateralCtx.font = '15.5px georgia';
         lateralCtx.fillStyle = 'black';
         lateralCtx.fillText(`Name: ${actorEntry.actorName}`, 8, 50);
@@ -106,7 +118,6 @@ class Game {
     /// , , , , , 
 
     printEnemyStats (actorEntry) {
-        console.log(`You printed ${actorEntry.actorName}`)
         lateralCtx.font = '15.5px georgia';
         lateralCtx.fillStyle = 'black';
         lateralCtx.fillText(`Name: ${actorEntry.actorName}`, 8, 625);

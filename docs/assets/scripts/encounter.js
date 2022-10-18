@@ -94,13 +94,25 @@ class BattleEncounter {
     }
 
     resultAttack(attacker, defender, damage){
-        if (alphaTrigger === 2) {
+        if (attacker.atrSPD >= 60) {
             this.clearChatBox();
-            this.cleateChatBox();
+            this.createChatBox();
+            attacker.atrSPD -= 60;
+            console.log(damage);
+
+            if (damage > 0) {
+                defender.atrHP -= damage;
+            }
+
+
+
+
             if (damage >= 1){
                 if (attacker.atrHP > damage) {
+                    defender.atrHP -= damage;
                     this.createDescripText(`${attacker.actorName} attacked ${defender.actorName} with success!`, `${defender.actorName} suffered ${damage} points of damage!`, `${defender.actorName} has ${defender.atrHP} HP left!`);
                 } else if (defender.atrHP <= damage) {
+                    defender.atrHP -= damage;
                     this.createDescripText(`${attacker.actorName} has defeated ${defender.actorName}!`, "", ""); 
                 };
             } else if (damage <= 0) {
