@@ -3,11 +3,20 @@
 
 const game = new Game;
 
+let infinitePlayer;
+
+/* document.getElementById("mainStart-btn").addEventListener("click", () => {
+    console.log("A new way of click start")
+    const gammaPlayer = game.heroCreator(document.getElementById("chosenAncestry").value, document.getElementById("chosenClass").value);
+    return gammaPlayer;
+}); */
+
 window.onload = () => {
     document.getElementById("mainStart-btn").onclick = () => {
         if (gameStarted === 0) {
             console.log("Start Button was clicked with value 0")
-            heroCreator();
+            infinitePlayer = game.heroCreator(document.getElementById("chosenAncestry").value, document.getElementById("chosenClass").value);
+            infinitePlayer.actorName = game.heroNamer(document.getElementById("heroName").value);
             startGame();
             setTimeout(() => {
                 alphaTrigger++;
@@ -17,61 +26,6 @@ window.onload = () => {
             console.log("Start Button was clicked with value above 0")
         }
     };
-
-    function heroCreator() {
-        console.log("heroCreator was invoked!")
-        let heroName = document.getElementById("heroName").value;
-        if (heroName.includes(1) || heroName.includes(2) || heroName.includes(3) || heroName.includes(4) || heroName.includes(5) || heroName.includes(6) || heroName.includes(7) || heroName.includes(8) || heroName.includes(9) || heroName.includes(0) || heroName.length >= 9 || heroName.length === 0) {
-            heroName = "Hero";
-        }
-        let chosenAncestry = document.getElementById("chosenAncestry").value;
-        let chosenClass = document.getElementById("chosenClass").value;
-
-        // Human Options
-
-        if (chosenAncestry === "Human" || !chosenAncestry) {
-            if (chosenClass === "Warrior" || !chosenClass) {
-                // HUMAN WARRIOR
-                var alphaPlayer = new HumanWarrior(heroName)
-                printHeroStats(alphaPlayer);
-                alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName);
-            }
-            if (chosenClass === "Ranger") {
-                // HUMAN RANGER
-            }
-            if (chosenClass === "Wizard") {
-
-            }
-        }
-
-        // Elf Options
-
-        if (chosenAncestry === "Elf") {
-            if (chosenClass === "Warrior") {
-                // ELF WARRIOR
-            }
-            if (chosenClass === "Ranger") {
-                // ELF RANGER
-            }
-            if (chosenClass === "Wizard") {
-                // ELF WIZARD
-            }
-        }
-
-        // Dwarf Options
-
-        if (chosenAncestry === "Dwarf") {
-            if (chosenClass === "Warrior") {
-                // DWARF WARRIOR
-            }
-            if (chosenClass === "Ranger") {
-                // DWARF RANGER
-            }
-            if (chosenClass === "Wizard") {
-                // DWARF WIZARD
-            }
-        }
-    }
 
     function startGame () {
         gameStarted++;
@@ -131,19 +85,24 @@ window.onload = () => {
 
 
 function alphaChecking () {
-    if (alphaTrigger === 1){
+    if (alphaTrigger === 1) {
         clearInterval(alphaChecker);
         const alphaEncounter = new BattleEncounter;
         /* future conditionals for enemy variance */
         const alphaEnemy = new BaseSlime;
+        const alphaPlayer = infinitePlayer;
         alphaEncounter.startEncounter();
+        alphaEncounter.setActors(alphaPlayer, alphaEnemy);
 /*         mainCtx.clearRect(0, 0, mainCanvas.clientWidth, mainCanvas.height); */
 /*         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName); */
+        alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName);
         alphaEnemy.drawActor(alphaEnemy.color, alphaEnemy.actorName);
         game.printEnemyStats(alphaEnemy);
         alphaTrigger++;
         console.log("Alpha trigger has been pushed to 2+")
+        console.log(alphaEnemy);
     }
 }
 
 const alphaChecker = setInterval(alphaChecking, 1000 / 60);
+

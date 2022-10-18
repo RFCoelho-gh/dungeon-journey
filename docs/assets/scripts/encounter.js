@@ -1,11 +1,16 @@
 //* ENCOUNTER GOVERNOR STARTS HERE //
 
 class BattleEncounter {
-    constructor(encounterRow, encounterColumn, playerActor, enemyActor) {
+    constructor(encounterRow, encounterColumn, leftActor, enemyActor) {
         this.encounterRow = encounterRow;
         this.encounterColumn = encounterColumn;
         this.isPlayerTurn = false;
         this.isEnemyTurn = false;
+        this.leftActor;
+        this.enemyActor;
+    }
+
+    setActors(playerActor, enemyActor){
         this.leftActor = playerActor;
         this.enemyActor = enemyActor;
     }

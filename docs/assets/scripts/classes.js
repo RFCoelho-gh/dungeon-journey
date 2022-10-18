@@ -18,6 +18,10 @@ class Actor {
         this.height = 50;
     }
 
+    setName(newName) {
+        this.actorName = newName;
+    }
+
     receiveDamage(damage) {
         this.atrHP = this.atrHP - damage;
     }
@@ -155,10 +159,10 @@ class BaseSlime extends Actor {
             slimeBonusDEX: 2,
             slimeBonusINT: -5,
         };
-        this.atrHP = atrHP + this.slimeAtrBonus.slimeBonusHP;
-        this.atrSTR = atrSTR + this.slimeAtrBonus.slimeBonusSTR;
-        this.atrDEX = atrDEX + this.slimeAtrBonus.slimeBonusDEX;
-        this.atrINT = atrINT + this.slimeAtrBonus.slimeBonusINT;
+        this.atrHP = baseHP + this.slimeAtrBonus.slimeBonusHP;
+        this.atrSTR = baseSTR + this.slimeAtrBonus.slimeBonusSTR;
+        this.atrDEX = baseDEX + this.slimeAtrBonus.slimeBonusDEX;
+        this.atrINT = baseINT + this.slimeAtrBonus.slimeBonusINT;
         this.color = "green";
         this.abilities = [
             {

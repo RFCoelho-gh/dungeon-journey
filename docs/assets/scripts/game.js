@@ -1,5 +1,64 @@
 class Game {
 
+    heroNamer(inputName) {
+        console.log("heroNamer was invoked inside of a Game Class")
+        if (inputName.length >= 9 || inputName.length <= 1) {
+            return "Hero";
+        } else {
+            return inputName;
+        }
+    }
+
+    heroCreator (inputAncestry, inputClass) {
+
+        console.log("heroCreator was invoked inside of a Game Class");
+
+        // Human Options
+
+        if (inputAncestry === "Human" || !inputAncestry) {
+            if (inputClass === "Warrior" || !inputClass) {
+                // HUMAN WARRIOR
+                return new HumanWarrior;
+            } else if (inputClass === "Ranger") {
+                // HUMAN RANGER
+            } else if (inputClass === "Wizard") {
+
+            };
+        }
+
+        // Elf Options
+
+        if (inputAncestry === "Elf") {
+            if (inputClass === "Warrior") {
+                // ELF WARRIOR
+            } else if (inputClass === "Ranger") {
+                // ELF RANGER
+            } else if (inputClass === "Wizard") {
+
+            };
+        }
+
+        // Dwarf Options
+
+        if (inputAncestry === "Dwarf") {
+            if (inputClass === "Warrior") {
+                // DWARF WARRIOR
+            } else if (inputClass === "Ranger") {
+                // DWARF RANGER
+            } else if (inputClass === "Wizard") {
+                // DWARF WIZARD
+            };
+        }
+    }
+
+    printHeroStats (heroEntry) {
+        console.log(`You printed the stats of ${heroEntry.actorName}`);
+        lateralCtx.font = '15.5px georgia';
+        lateralCtx.fillStyle = 'black';
+        lateralCtx.fillText(`Name: ${heroEntry.actorName}`)
+    }
+
+
     /// INCLUDE FUTURE CONDITIONALS TO HIDE VALUES BASED ON PLAYER OWN VLAUES
 
     printEnemyStats (actorEntry) {
