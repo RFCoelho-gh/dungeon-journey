@@ -50,9 +50,12 @@ function alphaChecking () {
         alphaEncounter.createChatBox();
         alphaEncounter.createDescripText(`The adventurer ${alphaPlayer.actorName} encounters a wandering ${alphaEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${alphaPlayer.actorName}, the ${alphaPlayer.className}!`);
         alphaEncounter.drawBackground();
-/*         setTimeout(() => {
+        setTimeout(() => {
             alphaEncounter.clearChatBox();
-          }, "2000"); */
+            alphaEncounter.createChatBox();
+            alphaEncounter.createDescripText(`${alphaPlayer.actorName}, select your action!`, "", "")
+            alphaEncounter.createAttackMenu(alphaPlayer);
+          }, "500");
     }
 }
 
