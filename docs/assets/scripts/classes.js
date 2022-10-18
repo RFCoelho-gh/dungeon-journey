@@ -1,6 +1,6 @@
 //* base Actor
 
-let baseHP = 12;
+let baseHP = 12+10;
 let baseSTR = 10;
 let baseDEX = 10;
 let baseINT = 10;
@@ -92,7 +92,7 @@ class HumanWarrior extends Human {
     constructor(actorName, atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
         super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, width, height, atrSPD, friendly, width, height)
         this.warriorAtrBonus = {
-            warriorBonusHP: 6+94,
+            warriorBonusHP: 6,
             warriorBonusSTR: 4,
             warriorBonusDEX: 2,
             warriorBonusINT: -2,
@@ -169,10 +169,10 @@ class BaseSlime extends Actor {
         this.actorName = "Green Slime";
         this.className = "Common Slime";
         this.slimeAtrBonus = {
-            slimeBonusHP: 100-7,
-            slimeBonusSTR: -2,
-            slimeBonusDEX: 2,
-            slimeBonusINT: -5,
+            slimeBonusHP: -7+2,
+            slimeBonusSTR: -2+2,
+            slimeBonusDEX: 2+2,
+            slimeBonusINT: -5+2,
             slimeBonusSPD: 0,
         };
         this.atrMaxHP = baseHP + this.slimeAtrBonus.slimeBonusHP;

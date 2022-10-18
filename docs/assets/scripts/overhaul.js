@@ -58,7 +58,7 @@ setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Mod
     if (firstEnemy.atrSPD < 100 && firstEnemy.atrSPD >= 0) {
         firstEnemy.atrSPD += (firstEnemy.rollDice(6) + player.attributeModifier(firstEnemy.atrDEX));
     }
-}, 1000 / 2) // NORMAL VALUE IS 500, RESTORE AFTER TESTING
+}, 1000 / 2.5) // NORMAL VALUE IS 500, RESTORE AFTER TESTING
 
 // ENEMY AI
 
@@ -70,11 +70,13 @@ setInterval(()=>{
             if (firstEnemy.attributeModifier(firstEnemy.atrSTR) + firstEnemy.rollDice(20) >= player.atrSTR) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[0].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrSTR);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
+                player.atrSPD -= Math.floor((floatingDamage * 3) * 1.25);
             };
         } else if (RNG === 2) {
             if (firstEnemy.attributeModifier(firstEnemy.atrDEX) + firstEnemy.rollDice(20) >= player.atrDEX) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[1].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrDEX);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
+                player.atrSPD -= Math.floor((floatingDamage * 3) * 1.25);
             }
         }
     }
@@ -88,6 +90,7 @@ document.getElementById("optionA-btn").addEventListener("click", () => {
         if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrSTR) {
             let floatingDamage = player.rollDice(player.actions[0].abilityDamageDice) + player.attributeModifier(player.atrSTR);
             firstEnemy.atrHP -= floatingDamage;
+            firstEnemy.atrSPD -= floatingDamage * 3;
         }
     } else {
         console.log("No speed!")
@@ -100,6 +103,7 @@ document.getElementById("optionB-btn").addEventListener("click", () => {
         if (player.attributeModifier(player.atrDEX) + player.rollDice(20) >= firstEnemy.atrDEX) {
             let floatingDamage = player.rollDice(player.actions[1].abilityDamageDice) + player.attributeModifier(player.atrDEX);
             firstEnemy.atrHP -= floatingDamage;
+            firstEnemy.atrSPD -= floatingDamage * 3;
         }
     }
 })
@@ -110,6 +114,7 @@ document.getElementById("optionC-btn").addEventListener("click", () => {
         if (player.attributeModifier(player.atrINT) + player.rollDice(20) >= firstEnemy.atrINT) {
             let floatingDamage = player.rollDice(player.actions[2].abilityDamageDice) + player.attributeModifier(player.atrINT);
             firstEnemy.atrHP -= floatingDamage;
+            firstEnemy.atrSPD -= floatingDamage * 3;
         }
     }
 })
