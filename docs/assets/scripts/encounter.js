@@ -36,9 +36,9 @@ class BattleEncounter {
         mainCtx.fillRect(0, 625, mainCanvas.width, 175);
     }
 
-    createGoldenText(sentence1, sentence2, sentence3){
-        mainCtx.fillStyle = "gold";
-        mainCtx.font = "24px fantasy";
+    createDescripText(sentence1, sentence2, sentence3){
+        mainCtx.fillStyle = "white";
+        mainCtx.font = "24px cambria";
         if (sentence1.length !== 0) {
             mainCtx.fillText(sentence1, 50, 675)
         }

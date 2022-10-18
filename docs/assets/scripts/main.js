@@ -104,7 +104,7 @@ function alphaChecking () {
         console.log(alphaPlayer);
         console.log(alphaEnemy);
         alphaEncounter.createChatBox();
-        alphaEncounter.createGoldenText("a", "b", "c");
+        alphaEncounter.createDescripText(`The adventurer ${alphaPlayer.actorName} encounters a wandering ${alphaEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${alphaPlayer.actorName}, the ${alphaPlayer.className}!`);
     }
 }
 
