@@ -61,11 +61,14 @@ class Game {
         this.printEnemyStats(enemy);
     }
     
-    printSpeed (player, enemy) {
+    printSpeedBars (player, enemy) {
         mainCtx.font = "25px fantasy";
-        mainCtx.fillStyle = "black";
-        mainCtx.fillText(`${player.atrSPD}`, 205, 250);
+        mainCtx.fillStyle = "white";
+        mainCtx.fillText(`${player.atrSPD}`, 180, 250);
         mainCtx.fillText(`${enemy.atrSPD}`, 925, 250);
+        mainCtx.fillStyle = "yellow";
+        mainCtx.fillRect(218, 240, player.atrSPD, 5);
+        mainCtx.fillRect(961, 240, enemy.atrSPD, 5);
     }
 
     printHeroStats (actorEntry) {

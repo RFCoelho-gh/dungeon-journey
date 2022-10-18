@@ -47,7 +47,7 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
     player.drawActor(player.color, player.actorName);
     firstEnemy.drawActor(firstEnemy.color, firstEnemy.actorName);
     game.printBothStats(player, firstEnemy);
-    game.printSpeed(player, firstEnemy);
+    game.printSpeedBars(player, firstEnemy);
 }, 1000 / 60)
 
 setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Modifier
@@ -62,18 +62,18 @@ setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Mod
 // ENEMY AI
 
 setInterval(()=>{
-    if (firstEnemy.atrSPD >= 75) {
-        firstEnemy.atrSPD -= 75;
+    if (firstEnemy.atrSPD >= 100) {
+        firstEnemy.atrSPD -= 100;
         let RNG = firstEnemy.rollDice(2);
         if (RNG === 1) {
             if (firstEnemy.attributeModifier(firstEnemy.atrSTR) + firstEnemy.rollDice(20) >= player.atrSTR) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[0].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrSTR);
-                player.atrHP -= floatingDamage;
+                player.atrHP -= Math.floor(floatingDamage * 1.25);
             };
         } else if (RNG === 2) {
             if (firstEnemy.attributeModifier(firstEnemy.atrDEX) + firstEnemy.rollDice(20) >= player.atrDEX) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[1].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrDEX);
-                player.atrHP -= floatingDamage;
+                player.atrHP -= Math.floor(floatingDamage * 1.25);
             }
         }
     }
