@@ -44,8 +44,8 @@ class Actor {
         console.log("drawActor Method was invoked!")
         mainCtx.fillStyle = color;
         if (this.friendly === false) {
-            mainCtx.fillRect(1000, 400, this.width, this.height);
-            mainCtx.fillText(`${name}`, 1005, 350);
+            mainCtx.fillRect(950, 400, this.width, this.height);
+            mainCtx.fillText(`${name}`, 925, 350);
         } else {
             mainCtx.fillRect(200, 400, this.width, this.height);
             mainCtx.fillStyle = "black";

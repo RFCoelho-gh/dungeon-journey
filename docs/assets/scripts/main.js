@@ -101,6 +101,7 @@ function alphaChecking () {
         game.printEnemyStats(alphaEnemy);
         alphaTrigger++;
         console.log("Alpha trigger has been pushed to 2+")
+        console.log(alphaPlayer);
         console.log(alphaEnemy);
     }
 }
