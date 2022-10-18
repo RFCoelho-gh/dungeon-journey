@@ -11,6 +11,9 @@ let infinitePlayer;
     return gammaPlayer;
 }); */
 
+
+
+
 window.onload = () => {
     document.getElementById("mainStart-btn").onclick = () => {
         if (gameStarted === 0) {
@@ -27,6 +30,8 @@ window.onload = () => {
         }
     };
 }
+
+
 
 //* ALPHA ENCOUNTER STARTS HERE
 
@@ -55,9 +60,29 @@ function alphaChecking () {
             alphaEncounter.createChatBox();
             alphaEncounter.createDescripText(`${alphaPlayer.actorName}, select your action!`, "", "")
             alphaEncounter.createAttackMenu(alphaPlayer);
-          }, "500");
+          }, "3000");
+        alphaEncounter.encounterStarted = true;
     }
 }
+
+//* CONTROLS
+
+// KEY OPTION A
+
+document.getElementById("optionA-btn").addEventListener("click", () =>{
+
+    if (isPlayerTurn && !isEnemyTurn && alphaTrigger === 2) {
+        alphaEncounter.resultAttack(alphaPlayer, alphaEnemy, alphaEncounter.triggerAttack(alphaPlayer, alphaEnemy, 0));
+    } else {
+        console.log("No attacking out of your turn!");
+    }
+});
+
+
+
+
+
+//* END OF CONTROLS
 
 const alphaChecker = setInterval(alphaChecking, 1000 / 60);
 

@@ -8,6 +8,7 @@ class BattleEncounter {
         this.isEnemyTurn = false;
         this.leftActor;
         this.enemyActor;
+        this.encounterStarted = false;
     }
 
     setActors(playerActor, enemyActor){
@@ -86,6 +87,28 @@ class BattleEncounter {
         mainCanvas.style.backgroundRepeat = "no-repeat";
         mainCanvas.style.backgroundImage = "url(docs/assets/images/ff2_forest_background.png)";
         console.log("drawBackground was invoked!")
+    }
+
+    triggerAttack(attacker, defender, actionIndex){
+        return attacker.actions[actionIndex].execute(defender);
+    }
+
+    resultAttack(attacker, defender, damage){
+        if (this.encounterStarted && alphaTrigger === 2) {
+            this.clearChatBox();
+            this.cleateChatBox();
+            if (damage >= 1){
+                if (attacker.atrHP > damage) {
+                    this.createDescripText(`${attacker.actorName} attacked ${defender.actorName} with success!`, `${defender.actorName} suffered ${damage} points of damage!`, `${defender.actorName} has ${defender.atrHP} HP left!`);
+                } else if (defender.atrHP <= damage) {
+                    this.createDescripText(`${attacker.actorName} has defeated ${defender.actorName}!`, "", ""); 
+                };
+            } else if (damage <= 0) {
+                this.createDescripText(`${attacker.actorName} has missed their attack on ${defender.actorName}!`, "", "");
+            }
+        } else {
+            console.log("No attacking out of your turn!");
+        }
     }
 
     fetchEnemy(array){
