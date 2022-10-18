@@ -9,6 +9,7 @@ let baseSPD = 0;
 class Actor {
     constructor(){
         this.actorName = "";
+        this.atrMaxHP = baseHP;
         this.atrHP = baseHP;
         this.atrSTR = baseSTR;
         this.atrDEX = baseDEX;
@@ -62,8 +63,8 @@ class Actor {
 // Human
 
 class Human extends Actor {
-    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
-        super(atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
+    constructor(actorName, atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
+        super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
         this.actorName = actorName;
         this.humanAtrBonus = {
             humanBonusHP: 2,
@@ -72,6 +73,7 @@ class Human extends Actor {
             humanBonusINT: 1,
             humanBonusSPD: 0,
         };
+        this.atrMaxHP = atrHP + this.humanAtrBonus.humanBonusHP;
         this.atrHP = atrHP + this.humanAtrBonus.humanBonusHP;
         this.atrSTR = atrSTR + this.humanAtrBonus.humanBonusSTR;
         this.atrDEX = atrDEX + this.humanAtrBonus.humanBonusDEX;
@@ -87,8 +89,8 @@ class Human extends Actor {
 
 // Human Warrior
 class HumanWarrior extends Human {
-    constructor(actorName, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
-        super(atrHP, atrSTR, atrDEX, atrINT, width, height, atrSPD, friendly, width, height)
+    constructor(actorName, atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
+        super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, width, height, atrSPD, friendly, width, height)
         this.warriorAtrBonus = {
             warriorBonusHP: 6+94,
             warriorBonusSTR: 4,
@@ -98,6 +100,7 @@ class HumanWarrior extends Human {
         };
         this.actorName = actorName;
         this.className = "Human Warrior";
+        this.atrMaxHP = baseHP + this.humanAtrBonus.humanBonusHP + this.warriorAtrBonus.warriorBonusHP; 
         this.atrHP = baseHP + this.humanAtrBonus.humanBonusHP + this.warriorAtrBonus.warriorBonusHP;
         this.atrSTR = baseSTR + this.humanAtrBonus.humanBonusSTR + this.warriorAtrBonus.warriorBonusSTR;
         this.atrDEX = baseDEX + this.humanAtrBonus.humanBonusDEX + this.warriorAtrBonus.warriorBonusDEX;
@@ -161,17 +164,18 @@ class HumanWarrior extends Human {
 // base Slime (Green Slime aka Common Slime)
 
 class BaseSlime extends Actor {
-    constructor(atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
+    constructor(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
         super(atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
         this.actorName = "Green Slime";
         this.className = "Common Slime";
         this.slimeAtrBonus = {
-            slimeBonusHP: 100,
+            slimeBonusHP: 100-7,
             slimeBonusSTR: -2,
             slimeBonusDEX: 2,
             slimeBonusINT: -5,
             slimeBonusSPD: 0,
         };
+        this.atrMaxHP = baseHP + this.slimeAtrBonus.slimeBonusHP;
         this.atrHP = baseHP + this.slimeAtrBonus.slimeBonusHP;
         this.atrSTR = baseSTR + this.slimeAtrBonus.slimeBonusSTR;
         this.atrDEX = baseDEX + this.slimeAtrBonus.slimeBonusDEX;

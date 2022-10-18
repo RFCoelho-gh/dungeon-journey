@@ -64,11 +64,31 @@ class Game {
     printSpeedBars (player, enemy) {
         mainCtx.font = "25px fantasy";
         mainCtx.fillStyle = "white";
-        mainCtx.fillText(`${player.atrSPD}`, 180, 250);
-        mainCtx.fillText(`${enemy.atrSPD}`, 925, 250);
+        mainCtx.fillText(`↻ ${player.atrSPD}`, 155, 250);
+        mainCtx.fillText(`↻ ${enemy.atrSPD}`, 900, 250);
+        //
+        mainCtx.fillStyle = "black";
+        mainCtx.fillRect(218, 240, 100, 5.1);
+        mainCtx.fillRect(961, 240, 100, 5.1);
+        //
         mainCtx.fillStyle = "yellow";
         mainCtx.fillRect(218, 240, player.atrSPD, 5);
         mainCtx.fillRect(961, 240, enemy.atrSPD, 5);
+    }
+
+    printHealthBars (player, enemy){
+        mainCtx.font = "25px fantasy";
+        mainCtx.fillStyle = "white";
+        mainCtx.fillText(`❤ ${player.atrHP}`, 147, 222);
+        mainCtx.fillText(`❤ ${enemy.atrHP}`, 892, 222);
+        //
+        mainCtx.fillStyle = "black";
+        mainCtx.fillRect(218, 212, 100, 5);
+        mainCtx.fillRect(961, 212, 100, 5);
+        //
+        mainCtx.fillStyle = "green";
+        mainCtx.fillRect(218, 212, (player.atrHP / player.atrMaxHP * 100), 5);
+        mainCtx.fillRect(961, 212, (enemy.atrHP / enemy.atrMaxHP * 100), 5);
     }
 
     printHeroStats (actorEntry) {

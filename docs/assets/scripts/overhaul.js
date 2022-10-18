@@ -48,6 +48,7 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
     firstEnemy.drawActor(firstEnemy.color, firstEnemy.actorName);
     game.printBothStats(player, firstEnemy);
     game.printSpeedBars(player, firstEnemy);
+    game.printHealthBars(player, firstEnemy);
 }, 1000 / 60)
 
 setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Modifier
