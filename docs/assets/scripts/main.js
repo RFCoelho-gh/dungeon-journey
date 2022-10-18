@@ -97,6 +97,7 @@ function alphaChecking () {
 /*         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName); */
         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName);
         alphaEnemy.drawActor(alphaEnemy.color, alphaEnemy.actorName);
+        game.printHeroStats(alphaPlayer);
         game.printEnemyStats(alphaEnemy);
         alphaTrigger++;
         console.log("Alpha trigger has been pushed to 2+")

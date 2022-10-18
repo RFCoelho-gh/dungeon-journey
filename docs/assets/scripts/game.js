@@ -51,11 +51,49 @@ class Game {
         }
     }
 
-    printHeroStats (heroEntry) {
-        console.log(`You printed the stats of ${heroEntry.actorName}`);
+    printHeroStats (actorEntry) {
+        console.log(`You printed the stats of ${actorEntry.actorName}`);
         lateralCtx.font = '15.5px georgia';
         lateralCtx.fillStyle = 'black';
-        lateralCtx.fillText(`Name: ${heroEntry.actorName}`)
+        lateralCtx.fillText(`Name: ${actorEntry.actorName}`, 8, 50);
+        lateralCtx.fillText(`Class: ${actorEntry.className}`, 8, 75);
+        lateralCtx.fillText(`Hit Points: ${actorEntry.atr}`, 8, 100);
+
+        // COLOR CONDITIONAL FOR STRENGTH
+        if(actorEntry.attributeModifier(actorEntry.atrSTR) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+        } else if (actorEntry.attributeModifier(actorEntry.atrSTR < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+        }
+
+        // COLOR CONDITIONAL FOR DEXTERITIY
+        if(actorEntry.attributeModifier(actorEntry.atrDEX) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+        } else if (actorEntry.attributeModifier(actorEntry.atrDEX < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+        }
+
+        // COLOR CONDITIONAL FOR INTELLIGENCE
+        if(actorEntry.attributeModifier(actorEntry.atrINT) > 0) {
+            lateralCtx.fillStyle = 'green';
+            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+        } else if (actorEntry.attributeModifier(actorEntry.atrINT < 0)) {
+            lateralCtx.fillStyle = 'red';
+            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+        } else {
+            lateralCtx.fillStyle = 'yellow';
+            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+        }
     }
 
 
