@@ -1,5 +1,9 @@
 class Game {
 
+    startGame() {
+        gameStarted++;
+    }
+
     heroNamer(inputName) {
         console.log("heroNamer was invoked inside of a Game Class")
         if (inputName.length >= 9 || inputName.length <= 1) {
