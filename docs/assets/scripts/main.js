@@ -26,16 +26,9 @@ window.onload = () => {
             console.log("Start Button was clicked with value above 0")
         }
     };
-
-    function startGame () {
-        gameStarted++;
-    };
 }
 
-
 //* ALPHA ENCOUNTER STARTS HERE
-
-
 
 function alphaChecking () {
     if (alphaTrigger === 1) {
@@ -46,8 +39,6 @@ function alphaChecking () {
         const alphaPlayer = infinitePlayer;
         alphaEncounter.startEncounter();
         alphaEncounter.setActors(alphaPlayer, alphaEnemy);
-/*         mainCtx.clearRect(0, 0, mainCanvas.clientWidth, mainCanvas.height); */
-/*         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName); */
         alphaPlayer.drawActor(alphaPlayer.color, alphaPlayer.actorName);
         alphaEnemy.drawActor(alphaEnemy.color, alphaEnemy.actorName);
         game.printHeroStats(alphaPlayer);
@@ -59,8 +50,13 @@ function alphaChecking () {
         alphaEncounter.createChatBox();
         alphaEncounter.createDescripText(`The adventurer ${alphaPlayer.actorName} encounters a wandering ${alphaEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${alphaPlayer.actorName}, the ${alphaPlayer.className}!`);
         alphaEncounter.drawBackground();
+/*         setTimeout(() => {
+            alphaEncounter.clearChatBox();
+          }, "2000"); */
     }
 }
 
 const alphaChecker = setInterval(alphaChecking, 1000 / 60);
+
+
 

@@ -31,9 +31,14 @@ class BattleEncounter {
     }
 
     createChatBox(){
-        console.log("You attempted to create a Chat Box!")
+        console.log("You attempted to create Chat Box!")
         mainCtx.fillStyle = "#1e3f5a";
         mainCtx.fillRect(0, 625, mainCanvas.width, 175);
+    }
+
+    clearChatBox(){
+        console.log("You attempted to clear the Chat Box!")
+        mainCtx.clearRect(0, 625, mainCanvas.width, 175);
     }
 
     createDescripText(sentence1, sentence2, sentence3){
