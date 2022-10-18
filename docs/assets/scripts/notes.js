@@ -78,3 +78,27 @@ window.onload = () => {
     createRoad();
   }
 };
+
+document.getElementById("start-button").addEventListener("click", () =>{
+  console.log("I clicked the start")
+/*   player.drawCar(); */
+  game.startGame();
+  score();
+  didYouStart = 1;
+})
+
+//Moving the Car
+
+document.addEventListener('keydown', (e) => {
+  switch (e.code) {
+    case 'ArrowLeft':
+      player.driveLeft();
+      score();
+      console.log("Help!")
+      break;
+    case 'ArrowRight':
+      player.driveRight();
+      score();
+      break;
+  }
+});

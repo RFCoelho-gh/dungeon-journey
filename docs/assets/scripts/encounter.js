@@ -4,8 +4,8 @@ class BattleEncounter {
     constructor(encounterRow, encounterColumn, leftActor, enemyActor) {
         this.encounterRow = encounterRow;
         this.encounterColumn = encounterColumn;
-        this.isPlayerTurn = false;
-        this.isEnemyTurn = false;
+/*         this.isPlayerTurn = false;
+        this.isEnemyTurn = false; */
         this.leftActor;
         this.enemyActor;
         this.encounterStarted = false;
@@ -17,17 +17,17 @@ class BattleEncounter {
     }
 
     startEncounter() {
-        this.isPlayerTurn = true;
-        this.isEnemyTurn = false;
+        isPlayerTurn = true;
+        isEnemyTurn = false;
     }
 
     passTurn(){
-        if (this.isPlayerTurn && !this.isEnemyTurn) {
-            this.isPlayerTurn = false;
-            this.isEnemyTurn = true;
-        } else if (this.isEnemyTurn && !this.isPlayerTurn) {
-            this.isEnemyTurn = true;
-            this.isEnemyTurn = false;
+        if (isPlayerTurn && !isEnemyTurn) {
+            isPlayerTurn = false;
+            isEnemyTurn = true;
+        } else if (isEnemyTurn && !isPlayerTurn) {
+            isEnemyTurn = true;
+            isEnemyTurn = false;
         }
     }
 
@@ -94,7 +94,7 @@ class BattleEncounter {
     }
 
     resultAttack(attacker, defender, damage){
-        if (this.encounterStarted && alphaTrigger === 2) {
+        if (alphaTrigger === 2) {
             this.clearChatBox();
             this.cleateChatBox();
             if (damage >= 1){

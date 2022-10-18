@@ -5,6 +5,10 @@ const game = new Game;
 
 let infinitePlayer;
 
+let firstEncounter;
+
+let currentStage;
+
 /* document.getElementById("mainStart-btn").addEventListener("click", () => {
     console.log("A new way of click start")
     const gammaPlayer = game.heroCreator(document.getElementById("chosenAncestry").value, document.getElementById("chosenClass").value);
@@ -63,20 +67,21 @@ function alphaChecking () {
           }, "3000");
         alphaEncounter.encounterStarted = true;
     }
+
+    //* CONTROLS
+
+    // KEY OPTION A
+
+    document.getElementById("optionA-btn").addEventListener("click", () => {
+        if (isPlayerTurn && !isEnemyTurn) {
+            alphaEncounter.resultAttack(alphaPlayer, alphaEnemy, alphaEncounter.triggerAttack(alphaPlayer, alphaEnemy, 0));
+        } else {
+            console.log("No attacking out of your turn!");
+        }
+    });
 }
 
-//* CONTROLS
 
-// KEY OPTION A
-
-document.getElementById("optionA-btn").addEventListener("click", () =>{
-
-    if (isPlayerTurn && !isEnemyTurn && alphaTrigger === 2) {
-        alphaEncounter.resultAttack(alphaPlayer, alphaEnemy, alphaEncounter.triggerAttack(alphaPlayer, alphaEnemy, 0));
-    } else {
-        console.log("No attacking out of your turn!");
-    }
-});
 
 
 
