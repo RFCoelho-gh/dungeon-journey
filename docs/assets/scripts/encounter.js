@@ -30,6 +30,26 @@ class BattleEncounter {
         }
     }
 
+    createChatBox(){
+        console.log("You attempted to create a Chat Box!")
+        mainCtx.fillStyle = "#1e3f5a";
+        mainCtx.fillRect(0, 625, mainCanvas.width, 175);
+    }
+
+    createGoldenText(sentence1, sentence2, sentence3){
+        mainCtx.fillStyle = "gold";
+        mainCtx.font = "24px fantasy";
+        if (sentence1.length !== 0) {
+            mainCtx.fillText(sentence1, 50, 675)
+        }
+        if (!sentence2.length !== 0) {
+            mainCtx.fillText(sentence2, 50, 715);
+        }
+        if (!sentence3.length !== 0) {
+            mainCtx.fillText(sentence3, 50, 755);
+        }
+    };
+
     fetchEnemy(array){
         let max = array.length - 1;
         let min = 1;
@@ -40,21 +60,6 @@ class BattleEncounter {
 /*             fetchedEnemy = new Skeleton; */
         } else if (array[rng] === 2) {
 /*             fetchedEnemy = new Orc; */
-        }
-    }
-
-    kickoffEncounter(enemyVar){
-        this.startEncounter();
-        // DRAWING
-        /* context.clearRect(0, 0, canvas.width, canvas.height); */
-        mainCtx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
-/*         player.drawActor (playerVar.color, playerVar.actorName); */
-        enemyVar.drawActor(enemyVar.color, enemyVar.actorName);
-    }
-
-    executePlayerChoice(){
-        if (this.isPlayerTurn){
-            
         }
     }
 }

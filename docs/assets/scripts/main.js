@@ -103,6 +103,8 @@ function alphaChecking () {
         console.log("Alpha trigger has been pushed to 2+")
         console.log(alphaPlayer);
         console.log(alphaEnemy);
+        alphaEncounter.createChatBox();
+        alphaEncounter.createGoldenText("a", "b", "c");
     }
 }
 

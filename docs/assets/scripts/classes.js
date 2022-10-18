@@ -49,7 +49,7 @@ class Actor {
         } else {
             mainCtx.fillRect(200, 400, this.width, this.height);
             mainCtx.fillStyle = "black";
-            mainCtx.font = '20px fantasy'
+            mainCtx.font = '20px fantasy';
             mainCtx.fillText(`${name}`, 205, 350);
         }
         mainCtx.fillStyle = "black";
