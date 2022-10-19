@@ -1,6 +1,6 @@
 //* base Actor
 
-let baseHP = 12+10;
+let baseHP = 12+10+(0);
 let baseSTR = 10;
 let baseDEX = 10;
 let baseINT = 10;
@@ -112,7 +112,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `STR against STR; deals D8+STR damage.`,
+                abilityShortDescrip: `STR ⚔ STR ~ ❤ d8+STR ~ ↻ 100`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.atrSPD === 100) {
@@ -131,7 +131,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Dexterity",
                 abilityDamageDice: 6,
                 abilityDamageType: "piercing",
-                abilityShortDescrip: `DEX against DEX; deals D6+DEX piercing damage.`,
+                abilityShortDescrip: `DEX ⚔ DEX ~ ❤ d6+DEX ~ ↻ 80`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
@@ -146,7 +146,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Intelligence",
                 abilityDamageDice: 4,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `INT against INT; deals D4+INT slashing damage.`,
+                abilityShortDescrip: `INT ⚔ INT ~ ❤ d4+INT ~ ↻ 60`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
@@ -161,13 +161,13 @@ class HumanWarrior extends Human {
 }
 
 //* Enemy Actor Ancestries
-// base Slime (Green Slime aka Common Slime)
+// base Slime (Green Slime aka Ooze)
 
 class BaseSlime extends Actor {
     constructor(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
         super(atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
         this.actorName = "Green Slime";
-        this.className = "Common Slime";
+        this.className = "Common Ooze";
         this.slimeAtrBonus = {
             slimeBonusHP: -7+2,
             slimeBonusSTR: -2+2,

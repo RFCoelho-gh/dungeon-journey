@@ -21,6 +21,17 @@ class BattleEncounter {
         isEnemyTurn = false;
     }
 
+    endEncounter(player, enemy) {
+        if (player.atrHP <= 0) {
+            anonymousIntervalHandler = 1000000;
+            player.atrHP = 0;
+        }
+        if (enemy.atrHP <= 0) {
+            anonymousIntervalHandler = 1000000;
+            enemy.atrHP = 0;
+        }
+    }
+
     passTurn(){
         if (isPlayerTurn && !isEnemyTurn) {
             isPlayerTurn = false;

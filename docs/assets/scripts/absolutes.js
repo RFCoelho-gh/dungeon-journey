@@ -13,3 +13,5 @@ const lateralCtx = lateralCanvas.getContext("2d");
 let alphaTrigger = 0;
 
 const arrayOfEnemies = ["GreenSlime", "Skeleton", "Orc"]
+
+let anonymousIntervalHandler = 1;
