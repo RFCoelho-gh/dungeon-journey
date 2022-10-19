@@ -69,6 +69,13 @@ class BattleEncounter {
 
     createAttackMenu(actor){
         console.log("You attempted to create an AttackMeu");
+        //
+        mainCtx.fillStyle = "white";
+        mainCtx.fillRect(29, 689, 152, 42);
+        mainCtx.fillRect(29, 739, 152, 42);
+        mainCtx.fillRect(599, 689, 152, 42);
+        mainCtx.fillRect(599, 739, 152, 42); 
+        //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(30, 690, 150, 40);
         mainCtx.fillRect(30, 740, 150, 40);

@@ -67,7 +67,7 @@ setInterval(() =>{
 // ENEMY AI
 
 setInterval(()=>{
-    if (firstEnemy.atrSPD >= 100 && player.atrHP > 0) {
+    if (firstEnemy.atrSPD >= 100 && player.atrHP > 0 && firstEnemy.atrHP > 0) {
         firstEnemy.atrSPD -= 100;
         let RNG = firstEnemy.rollDice(2);
         if (RNG === 1) {
