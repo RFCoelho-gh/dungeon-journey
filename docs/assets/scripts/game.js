@@ -4,6 +4,19 @@ class Game {
         gameStarted++;
     }
 
+    endGame(player, enemy){
+        if (player.atrHP === 0 && enemy.atrHP >= 1) { // PLAYER LOSS
+            mainCtx.font = '80px fantasy';
+            mainCtx.fillStyle = "#8B0000";
+            mainCtx.fillText(`${player.actorName} lost!`, 450, 325);
+        }
+        if (enemy.atrHP === 0 && player.atrHP >= 1) { // PLAYER WIN
+            mainCtx.font = '80px fantasy';
+            mainCtx.fillStyle = "white";
+            mainCtx.fillText(`${player.actorName} won!`,  450, 325)
+        }
+    }
+
     heroNamer(inputName) {
         console.log("heroNamer was invoked inside of a Game Class")
         if (inputName.length >= 9 || inputName.length <= 1) {
@@ -55,11 +68,21 @@ class Game {
         }
     }
 
+    drawStroked(ctx, string, x, y, fontFamily, fontPx, strokeColor, fillColor) {
+/*         ctx.font = '80px Sans-serif'; */
+        ctx.font = `${fontPx}px ${fontFamily}`;
+        ctx.strokeStyle = strokeColor;
+        ctx.lineWidth = 8;
+        ctx.strokeText(string, x, y);
+        ctx.fillStyle = fillColor;
+        ctx.fillText(string, x, y);
+    };
+
     printBothStats (player, enemy) {
         lateralCtx.clearRect(0, 0, 200, 800);
         this.printHeroStats(player);
         this.printEnemyStats(enemy);
-    }
+    };
     
     printSpeedBars (player, enemy) {
         mainCtx.font = "25px fantasy";

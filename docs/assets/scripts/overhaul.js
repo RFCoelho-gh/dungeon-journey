@@ -52,16 +52,17 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
 }, 1000 / 60 * anonymousIntervalHandler);
 
 setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Modifier
-    if (player.atrSPD < 100 && player.atrSPD >= 0) {
-        player.atrSPD += (player.rollDice(6) + player.attributeModifier(player.atrDEX));
+    if (player.atrSPD < 100 && player.atrSPD >= 0 && player.atrHP >= 1 && firstEnemy.atrHP >= 1) {
+        player.atrSPD += (player.rollDice(6) + player.attributeModifier(player.atrDEX) + 1);
     }
-    if (firstEnemy.atrSPD < 100 && firstEnemy.atrSPD >= 0) {
-        firstEnemy.atrSPD += (firstEnemy.rollDice(6) + player.attributeModifier(firstEnemy.atrDEX));
+    if (firstEnemy.atrSPD < 100 && firstEnemy.atrSPD >= 0 && firstEnemy.atrHP >= 1 && player.atrHP >= 1) {
+        firstEnemy.atrSPD += (firstEnemy.rollDice(6) + player.attributeModifier(firstEnemy.atrDEX) + 1);
     }
 }, 1000 / 2.5 * anonymousIntervalHandler); //! NORMAL VALUE IS '1000/2.5', RESTORE AFTER TESTING
 
 setInterval(() =>{
     firstEncounter.endEncounter(player, firstEnemy);
+    game.endGame(player, firstEnemy);
 }, 1000 / 60 * anonymousIntervalHandler);
 
 // ENEMY AI

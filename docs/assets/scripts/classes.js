@@ -53,17 +53,15 @@ class Actor {
 
     drawActor(color, name){
         mainCtx.fillStyle = color;
-        if (this.friendly === false) {
+        if (this.friendly === false) { // IF ENEMY
+            mainCtx.font = '20px fantasy';
             mainCtx.fillRect(950, 400, this.width, this.height);
             mainCtx.fillText(`${name}`, 925, 350);
-        } else {
+        } else { // IF PLAYER
             mainCtx.fillRect(200, 400, this.width, this.height);
-            mainCtx.fillStyle = "black";
             mainCtx.font = '20px fantasy';
             mainCtx.fillText(`${name}`, 205, 350);
         }
-        mainCtx.fillStyle = "black";
-
     }
 }
 
@@ -177,10 +175,10 @@ class BaseSlime extends Actor {
         this.actorName = "Green Slime";
         this.className = "Common Ooze";
         this.slimeAtrBonus = {
-            slimeBonusHP: -7+2,
-            slimeBonusSTR: -2+2,
-            slimeBonusDEX: 2+2,
-            slimeBonusINT: -5+2,
+            slimeBonusHP: -7+4,
+            slimeBonusSTR: -2+4,
+            slimeBonusDEX: 2+4,
+            slimeBonusINT: -5+4,
             slimeBonusSPD: 0,
         };
         this.atrMaxHP = baseHP + this.slimeAtrBonus.slimeBonusHP;
