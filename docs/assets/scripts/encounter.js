@@ -43,7 +43,6 @@ class BattleEncounter {
     }
 
     createChatBox(){
-
         //
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(0, 623, mainCanvas.width, 175);
@@ -55,6 +54,16 @@ class BattleEncounter {
     clearChatBox(){
         mainCtx.clearRect(0, 625, mainCanvas.width, 175);
     }
+
+/*     createAttackDeclaration(actionName){
+        mainCtx.fillStyle = "#1e3f5a";
+        mainCtx.fillRect(700, 625, 150, 40);
+        //
+        mainCtx.fillStyle = "white"
+        mainCtx.font = "20px fantasy";
+        mainCtx.fillText(`${actionName}+ !`, 700, 625);
+        //
+    }; */
 
     createDescripText(sentence1, sentence2, sentence3){
         mainCtx.fillStyle = "white";
@@ -101,12 +110,12 @@ class BattleEncounter {
 
     drawBackground() {
         let alphaBackground = new Image ();
-        alphaBackground.src = 'docs/assets/scripts/ff2_backgrounds.png'
+        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg'
         
         mainCtx.drawImage(alphaBackground, 0, 0);
-        mainCanvas.style.backgroundSize = "1200px 800px";
+        mainCanvas.style.backgroundSize = "1200px 625px";
         mainCanvas.style.backgroundRepeat = "no-repeat";
-        mainCanvas.style.backgroundImage = "url(docs/assets/images/ff2_forest_background.png)";
+        mainCanvas.style.backgroundImage = "url(docs/assets/images/dd_ruins_background.jpg)";
     }
 
     triggerAttack(attacker, defender, actionIndex){

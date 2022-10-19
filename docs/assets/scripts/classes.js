@@ -16,10 +16,15 @@ class Actor {
         this.atrINT = baseINT;
         this.atrSPD = baseSPD;
         this.color = "black";
-        this.img = "black";
         this.friendly = false;
         this.width = 50;
         this.height = 50;
+
+        const img1 = new Image ();
+        img1.src = "dd_warrior_rightfacing.png";
+
+        this.image = img1;
+
     }
 
     setName(newName) {
@@ -45,23 +50,27 @@ class Actor {
     }
 
     drawActor(color, image, name){
-        mainCtx.fillStyle = color;
+        mainCtx.fillStyle = "white";
 
         if (this.friendly === false) { // IF ENEMY
 
             mainCtx.font = '20px fantasy';
-            mainCtx.fillText(`${name}`, 925, 350);
+            mainCtx.fillText(`${name}`, 925, 185);
 
             mainCtx.fillStyle = image;
-            mainCtx.fillRect(950, 400, this.width, this.height);
+/*             mainCtx.fillRect(950, 400, this.width, this.height); */
+
+            mainCtx.drawImage(this.image, 780, 280, this.width, this.height);
 
         } else { // IF PLAYER
 
             mainCtx.font = '20px fantasy';
-            mainCtx.fillText(`${name}`, 205, 350);
+            mainCtx.fillText(`${name}`, 205, 185);
 
-            mainCtx.fillStyle = image;
-            mainCtx.fillRect(200, 400, this.width, this.height);
+            mainCtx.drawImage(this.image, 175, 285, this.width, this.height);
+
+        /*  mainCtx.fillStyle = image;
+            mainCtx.fillRect(200, 400, this.width, this.height); */
         }
     }
 }
@@ -97,21 +106,14 @@ class Human extends Actor {
 // Human Warrior
 class HumanWarrior extends Human {
     constructor(actorName, atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
-        super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, width, height, atrSPD, friendly, width, height)
+        super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
         this.warriorAtrBonus = {
             warriorBonusHP: 6,
             warriorBonusSTR: 4,
             warriorBonusDEX: 2,
             warriorBonusINT: -2,
-            warriorBonusSPD: 5,
+            warriorBonusSPD: 0,
         };
-
-        const img1 = new Image();
-
-        img1.addEventListener("load", () => {})
-        img1.src = "./docs/assets/images/octopath_warrior_rightfacing.png";
-
-        this.img = img1;
 
         this.actorName = actorName;
         this.className = "Human Warrior";
@@ -122,6 +124,9 @@ class HumanWarrior extends Human {
         this.atrINT = baseINT + this.humanAtrBonus.humanBonusINT + this.warriorAtrBonus.warriorBonusINT;
         this.atrSPD = baseSPD + this.humanAtrBonus.humanBonusSPD + this.warriorAtrBonus.warriorBonusSPD;
 
+        this.width = 589/2;
+        this.height = 580/2;
+
         this.actions = [ // ARRAY OF WARRIOR ABILITIES
             { // INDEX 0
                 abilityName: "Heavy Slash",
@@ -129,7 +134,7 @@ class HumanWarrior extends Human {
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
                 abilityShortDescrip: `STR ⚔ STR ~ ❤ d8+STR ~ ↻ 100`,
-                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
+                abilityDescription: `${actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.atrSPD === 100) {
                         if (this.attributeModifier(this.atrSTR) + this.rollDice(20) >= target.atrSTR) {
@@ -173,6 +178,7 @@ class HumanWarrior extends Human {
                 },
             },
         ];
+
     }
 }
 
@@ -200,6 +206,14 @@ class BaseSlime extends Actor {
         this.color = "green";
         this.backgroundX = 0;
         this.backgroundY = 0;
+        this.width = 574/2.5;
+        this.height = 759/2.5;
+
+        const img1 = new Image ();
+        img1.src = "dd_ectoplasm.png";
+
+        this.image = img1;
+
         this.actions = [
             {
                 abilityName: "Slimy Slam",

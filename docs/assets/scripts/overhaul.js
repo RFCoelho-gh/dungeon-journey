@@ -7,7 +7,7 @@ const firstEncounter = new BattleEncounter;
 
 const firstEnemy = new BaseSlime;
 
-player.actorName = "Hero";
+player.actorName = "Reynauld";
 
 firstEncounter.startEncounter();
 
@@ -19,9 +19,18 @@ firstEnemy.drawActor(firstEnemy.color, firstEnemy.img, firstEnemy.actorName);
 
 firstEncounter.createChatBox();
 
-firstEncounter.createDescripText(`The adventurer ${player.actorName} encounters a wandering ${firstEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${player.actorName}, the ${player.className}!`);
+firstEncounter.createDescripText(`The adventurer ${player.actorName} encounters a wandering ${firstEnemy.actorName} while in the dungeon!`, "It seems hostile!", `Prepare for battle, ${player.actorName}, the ${player.className}!`);
 
 firstEncounter.drawBackground();
+
+/* const img = new Image ();
+
+img.src = "octopath_warrior_rightfacing.png";
+
+function drawWarrior(){
+    mainCtx.drawImage(img, 600, 400, 112, 131);
+    mainCtx.fillRect(600, 800, 50, 50);
+}; */
 
 /* mainCtx.fillStyle = 'docs/assets/images/octopath_warrior_rightfacing.png'; */
 /* mainCtx.fillStyle = "red"; */
@@ -53,6 +62,7 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
     game.printBothStats(player, firstEnemy);
     game.printSpeedBars(player, firstEnemy);
     game.printHealthBars(player, firstEnemy);
+    drawWarrior();
 }, 1000 / 60 * anonymousIntervalHandler);
 
 setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Modifier
@@ -69,19 +79,22 @@ setInterval(() =>{
     game.endGame(player, firstEnemy);
 }, 1000 / 60 * anonymousIntervalHandler);
 
-// ENEMY AI
+//* ENEMY AI
 
 setInterval(()=>{
     if (firstEnemy.atrSPD >= 100 && player.atrHP > 0 && firstEnemy.atrHP > 0) {
         firstEnemy.atrSPD -= 100;
         let RNG = firstEnemy.rollDice(2);
+
         if (RNG === 1) {
+/*             firstEncounter.createAttackDeclaration(firstEnemy.actions[0].abilityName) */
             if (firstEnemy.attributeModifier(firstEnemy.atrSTR) + firstEnemy.rollDice(20) >= player.atrSTR) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[0].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrSTR);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
                 player.atrSPD -= Math.floor((floatingDamage * 3) * 1.25);
             };
         } else if (RNG === 2) {
+/*             firstEncounter.createAttackDeclaration(firstEnemy.actions[1].abilityName) */
             if (firstEnemy.attributeModifier(firstEnemy.atrDEX) + firstEnemy.rollDice(20) >= player.atrDEX) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[1].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrDEX);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
@@ -91,7 +104,7 @@ setInterval(()=>{
     }
 }, 1000 / 60 * anonymousIntervalHandler);
 
-// CONTROLS
+//* CONTROLS
 
 document.getElementById("optionA-btn").addEventListener("click", () => {
     if (player.atrSPD >= 100 && player.atrHP > 0) {
@@ -128,5 +141,8 @@ document.getElementById("optionC-btn").addEventListener("click", () => {
     };
 });
 
+console.log(player)
+
+console.log(firstEnemy);
 
 
