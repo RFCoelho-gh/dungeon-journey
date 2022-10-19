@@ -107,7 +107,6 @@ class BattleEncounter {
         mainCanvas.style.backgroundSize = "1200px 800px";
         mainCanvas.style.backgroundRepeat = "no-repeat";
         mainCanvas.style.backgroundImage = "url(docs/assets/images/ff2_forest_background.png)";
-        console.log("drawBackground was invoked!")
     }
 
     triggerAttack(attacker, defender, actionIndex){

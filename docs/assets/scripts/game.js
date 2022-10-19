@@ -90,6 +90,10 @@ class Game {
         mainCtx.fillText(`↻ ${player.atrSPD}`, 153, 250);
         mainCtx.fillText(`↻ ${enemy.atrSPD}`, 897, 250);
         //
+        mainCtx.fillStyle = "white";
+        mainCtx.fillRect(217, 239.5, 101.5, 7.1);
+        mainCtx.fillRect(960, 239.5, 101.5, 7.1);
+        //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(218, 240, 100, 6.1);
         mainCtx.fillRect(961, 240, 100, 6.1);
@@ -104,6 +108,10 @@ class Game {
         mainCtx.fillStyle = "white";
         mainCtx.fillText(`❤ ${player.atrHP}`, 147, 222);
         mainCtx.fillText(`❤ ${enemy.atrHP}`, 892, 222);
+        //
+        mainCtx.fillStyle = "white";
+        mainCtx.fillRect(217, 211.5, 101.5, 7.1);
+        mainCtx.fillRect(960, 211.5, 101.5, 7.1);
         //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(218, 212, 100, 6.1);

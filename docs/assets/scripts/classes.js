@@ -16,17 +16,10 @@ class Actor {
         this.atrINT = baseINT;
         this.atrSPD = baseSPD;
         this.color = "black";
+        this.img = "black";
         this.friendly = false;
         this.width = 50;
         this.height = 50;
-
-        
-
-
-
-
-
-
     }
 
     setName(newName) {
@@ -51,16 +44,24 @@ class Actor {
         return Math.floor((atr / 2) - 5);
     }
 
-    drawActor(color, name){
+    drawActor(color, image, name){
         mainCtx.fillStyle = color;
+
         if (this.friendly === false) { // IF ENEMY
+
             mainCtx.font = '20px fantasy';
-            mainCtx.fillRect(950, 400, this.width, this.height);
             mainCtx.fillText(`${name}`, 925, 350);
+
+            mainCtx.fillStyle = image;
+            mainCtx.fillRect(950, 400, this.width, this.height);
+
         } else { // IF PLAYER
-            mainCtx.fillRect(200, 400, this.width, this.height);
+
             mainCtx.font = '20px fantasy';
             mainCtx.fillText(`${name}`, 205, 350);
+
+            mainCtx.fillStyle = image;
+            mainCtx.fillRect(200, 400, this.width, this.height);
         }
     }
 }
@@ -104,6 +105,14 @@ class HumanWarrior extends Human {
             warriorBonusINT: -2,
             warriorBonusSPD: 5,
         };
+
+        const img1 = new Image();
+
+        img1.addEventListener("load", () => {})
+        img1.src = "./docs/assets/images/octopath_warrior_rightfacing.png";
+
+        this.img = img1;
+
         this.actorName = actorName;
         this.className = "Human Warrior";
         this.atrMaxHP = baseHP + this.humanAtrBonus.humanBonusHP + this.warriorAtrBonus.warriorBonusHP; 
@@ -112,6 +121,7 @@ class HumanWarrior extends Human {
         this.atrDEX = baseDEX + this.humanAtrBonus.humanBonusDEX + this.warriorAtrBonus.warriorBonusDEX;
         this.atrINT = baseINT + this.humanAtrBonus.humanBonusINT + this.warriorAtrBonus.warriorBonusINT;
         this.atrSPD = baseSPD + this.humanAtrBonus.humanBonusSPD + this.warriorAtrBonus.warriorBonusSPD;
+
         this.actions = [ // ARRAY OF WARRIOR ABILITIES
             { // INDEX 0
                 abilityName: "Heavy Slash",
@@ -170,8 +180,8 @@ class HumanWarrior extends Human {
 // base Slime (Green Slime aka Ooze)
 
 class BaseSlime extends Actor {
-    constructor(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height) {
-        super(atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
+    constructor(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, color, friendly, width, height) {
+        super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, color, friendly, width, height)
         this.actorName = "Green Slime";
         this.className = "Common Ooze";
         this.slimeAtrBonus = {

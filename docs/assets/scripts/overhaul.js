@@ -13,15 +13,19 @@ firstEncounter.startEncounter();
 
 firstEncounter.setActors(player, firstEnemy);
 
-player.drawActor(player.color, player.actorName);
+player.drawActor(player.color, player.img, player.actorName);
 
-firstEnemy.drawActor(firstEnemy.color, firstEnemy.actorName);
+firstEnemy.drawActor(firstEnemy.color, firstEnemy.img, firstEnemy.actorName);
 
 firstEncounter.createChatBox();
 
 firstEncounter.createDescripText(`The adventurer ${player.actorName} encounters a wandering ${firstEnemy.actorName} while in the forest!`, "It seems hostile!", `Prepare for battle, ${player.actorName}, the ${player.className}!`);
 
 firstEncounter.drawBackground();
+
+/* mainCtx.fillStyle = 'docs/assets/images/octopath_warrior_rightfacing.png'; */
+/* mainCtx.fillStyle = "red"; */
+/* mainCtx.fillRect(600, 400, 112, 131); */
 
 setTimeout(() => {
     firstEncounter.clearChatBox();
@@ -44,8 +48,8 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
         firstEnemy.atrSPD = 100;
     }
     mainCtx.clearRect(0, 0, 1200, 624);
-    player.drawActor(player.color, player.actorName);
-    firstEnemy.drawActor(firstEnemy.color, firstEnemy.actorName);
+    player.drawActor(player.color, player.img, player.actorName);
+    firstEnemy.drawActor(firstEnemy.color, firstEnemy.img, firstEnemy.actorName);
     game.printBothStats(player, firstEnemy);
     game.printSpeedBars(player, firstEnemy);
     game.printHealthBars(player, firstEnemy);
