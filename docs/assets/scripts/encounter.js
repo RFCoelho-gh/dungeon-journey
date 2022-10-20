@@ -159,10 +159,10 @@ class BattleEncounter {
         mainCtx.fillText("Q", 13, 713);
         //Keyboard A
         mainCtx.drawImage(this.image, 4, 738, 38, 38);
-        mainCtx.fillText("A", 14.5, 765);
+        mainCtx.fillText("A", 13.5, 765);
         //Keyboard S
         mainCtx.drawImage(this.image, 570, 738, 38, 38);
-        mainCtx.fillText("S", 581, 763);
+        mainCtx.fillText("S", 580, 763);
         //Keyboard W
         mainCtx.font = "24px arial";
         mainCtx.drawImage(this.image, 570, 688, 38, 38);
