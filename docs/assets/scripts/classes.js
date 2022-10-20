@@ -5,6 +5,7 @@ const baseSTR = 10;
 const baseDEX = 10;
 const baseINT = 10;
 const baseSPD = 0;
+const BAB = 2;
 
 class Actor {
     constructor(){
@@ -53,10 +54,9 @@ class Actor {
         if (this.friendly === false) { // IF ENEMY
 
             mainCtx.font = '20px fantasy';
-            mainCtx.fillText(`${name}`, 925, 185);
+            mainCtx.fillText(`${name}`, 795, 185);
 
             mainCtx.fillStyle = image;
-/*             mainCtx.fillRect(950, 400, this.width, this.height); */
 
             mainCtx.drawImage(this.image, 780, 300, this.width, this.height);
 
@@ -66,9 +66,6 @@ class Actor {
             mainCtx.fillText(`${name}`, 205, 185);
 
             mainCtx.drawImage(this.image, 175, 285, this.width, this.height);
-
-        /*  mainCtx.fillStyle = image;
-            mainCtx.fillRect(200, 400, this.width, this.height); */
         }
     }
 }
@@ -131,7 +128,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `d20+3 ⚔ DEX ~ ❤ d8+3 ~ ↻ 100`,
+                abilityShortDescrip: `d20+5 ⚔ DEX ~ ❤ d8+3 ~ ↻ 100`,
                 abilityDescription: `${actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.atrSPD === 100) {
@@ -150,7 +147,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Dexterity",
                 abilityDamageDice: 6,
                 abilityDamageType: "piercing",
-                abilityShortDescrip: `d20+1 ⚔ DEX ~ ❤ d6+1 ~ ↻ 80`,
+                abilityShortDescrip: `d20+3 ⚔ DEX ~ ❤ d6+1 ~ ↻ 80`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
@@ -161,11 +158,11 @@ class HumanWarrior extends Human {
                 },
             },
             {
-                abilityName: "Feinting Riposte",
+                abilityName: "Counter",
                 abilityAttribute: "Intelligence",
                 abilityDamageDice: 4,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `d20-1 ⚔ INT ~ ❤ d4-1 ~ ↻ 60`,
+                abilityShortDescrip: `d20+1 ⚔ INT ~ ❤ d4-1 ~ ↻ 60`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
@@ -180,7 +177,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 3,
                 abilityDamageType: "bludgeoning",
-                abilityShortDescrip: `d20+3 ⚔ STR ~ ❤ d4+3 ~ ↻ 100 ~ 🌀 SLOW`,
+                abilityShortDescrip: `d20+5 ⚔ STR ~ ❤ d4+3 ~ ↻ 100 ~ 🌀 SLOW`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
@@ -257,7 +254,7 @@ class BaseSlime extends Actor {
                 },
             },
             {
-                abilityName: "Plasmic Devouring",
+                abilityName: "Devour",
                 abilityAttribute: "Intelligence",
                 abilityDamageDice: 4,
                 abilityDamageType: "acid",

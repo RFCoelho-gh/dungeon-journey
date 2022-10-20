@@ -82,38 +82,38 @@ class Game {
         mainCtx.font = "25px fantasy";
         mainCtx.fillStyle = "white";
         mainCtx.fillText(`↻ ${player.atrSPD}`, 153, 250);
-        mainCtx.fillText(`↻ ${enemy.atrSPD}`, 897, 250);
+        mainCtx.fillText(`↻ ${enemy.atrSPD}`, 747, 250);
         //
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(217, 239.5, 101.5, 7.1);
-        mainCtx.fillRect(960, 239.5, 101.5, 7.1);
+        mainCtx.fillRect(810, 239.5, 101.5, 7.1);
         //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(218, 240, 100, 6.1);
-        mainCtx.fillRect(961, 240, 100, 6.1);
+        mainCtx.fillRect(811, 240, 100, 6.1);
         //
         mainCtx.fillStyle = "yellow";
         mainCtx.fillRect(218, 240, player.atrSPD, 6);
-        mainCtx.fillRect(961, 240, enemy.atrSPD, 6);
+        mainCtx.fillRect(811, 240, enemy.atrSPD, 6);
     }
 
     printHealthBars (player, enemy){
         mainCtx.font = "25px fantasy";
         mainCtx.fillStyle = "white";
         mainCtx.fillText(`❤ ${player.atrHP}`, 147, 222);
-        mainCtx.fillText(`❤ ${enemy.atrHP}`, 892, 222);
+        mainCtx.fillText(`❤ ${enemy.atrHP}`, 742, 222);
         //
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(217, 211.5, 101.5, 7.1);
-        mainCtx.fillRect(960, 211.5, 101.5, 7.1);
+        mainCtx.fillRect(810, 211.5, 101.5, 7.1);
         //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(218, 212, 100, 6.1);
-        mainCtx.fillRect(961, 212, 100, 6.1);
+        mainCtx.fillRect(851, 212, 60, 6.1);
         //
         mainCtx.fillStyle = "green";
         mainCtx.fillRect(218, 212, (player.atrHP / player.atrMaxHP * 100), 6);
-        mainCtx.fillRect(961, 212, (enemy.atrHP / enemy.atrMaxHP * 100), 6);
+        mainCtx.fillRect(811, 212, (enemy.atrHP / enemy.atrMaxHP * 100), 6);
     }
 
     printBothStats (player, enemy) {
@@ -128,94 +128,55 @@ class Game {
         leftCtx.fillStyle = 'gold';
         leftCtx.fillText(`${actorEntry.actorName}`, 45, 30);
         leftCtx.fillStyle = 'white';
-        leftCtx.font = '15.5px georgia';
-        leftCtx.fillText(`Class: ${actorEntry.className}`, 14, 75);
-        leftCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 14, 100);
+        leftCtx.font = 'bold 15px georgia';
+        leftCtx.fillText(`Class: ${actorEntry.className}`, 14, 175);
+        leftCtx.font = 'bold 15.5px georgia'
+        leftCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 14, 200);
 
-        // COLOR CONDITIONAL FOR STRENGTH
-        if(actorEntry.attributeModifier(actorEntry.atrSTR) > 0) {
-            leftCtx.fillStyle = 'green';
-            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
-        } else if (actorEntry.attributeModifier(actorEntry.atrSTR < 0)) {
-            leftCtx.fillStyle = 'red';
-            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
+        if (actorEntry.atrSTR <= 9) {
+            leftCtx.fillText(`STR: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 225);
         } else {
-            leftCtx.fillStyle = 'yellow';
-            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
-        }
+            leftCtx.fillText(`STR: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 225);
+        };
 
-        // COLOR CONDITIONAL FOR DEXTERITIY
-        if(actorEntry.attributeModifier(actorEntry.atrDEX) > 0) {
-            leftCtx.fillStyle = 'green';
-            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
-        } else if (actorEntry.attributeModifier(actorEntry.atrDEX < 0)) {
-            leftCtx.fillStyle = 'red';
-            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
+        if (actorEntry.atrDEX <= 9) {
+            leftCtx.fillText(`DEX: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 250);
         } else {
-            leftCtx.fillStyle = 'yellow';
-            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
-        }
+            leftCtx.fillText(`DEX: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 250);
+        };
 
-        // COLOR CONDITIONAL FOR INTELLIGENCE
-        if(actorEntry.attributeModifier(actorEntry.atrINT) > 0) {
-            leftCtx.fillStyle = 'green';
-            leftCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
-        } else if (actorEntry.attributeModifier(actorEntry.atrINT < 0)) {
-            leftCtx.fillStyle = 'red';
-            leftCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
+        if (actorEntry.atrINT <= 9) {
+            leftCtx.fillText(`INT: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 275);
         } else {
-            leftCtx.fillStyle = 'yellow';
-            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
-        }
-    }
-
-    /// INCLUDE FUTURE CONDITIONALS TO HIDE VALUES BASED ON PLAYER OWN VLAUES
-
-    ///
+            leftCtx.fillText(`INT: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 275);
+        };
+    };
 
     printEnemyStats (actorEntry) {
         rightCtx.font = 'italic 25.5px fantasy';
-        rightCtx.fillStyle = 'dark red';
+        rightCtx.fillStyle = 'red';
         rightCtx.fillText(`${actorEntry.actorName}`, 35, 30);
         rightCtx.fillStyle = 'white';
-        rightCtx.font = '15.5px georgia';
-        rightCtx.fillText(`Class: ${actorEntry.className}`, 8, 75);
-        rightCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 8, 100);
+        rightCtx.font = 'bold 15.5px georgia';
+        rightCtx.fillText(`Class: ${actorEntry.className}`, 8, 175);
+        rightCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 8, 200);
 
-        // COLOR CONDITIONAL FOR STRENGTH
-        if(actorEntry.attributeModifier(actorEntry.atrSTR) > 0) {
-            rightCtx.fillStyle = 'green';
-            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
-        } else if (actorEntry.attributeModifier(actorEntry.atrSTR < 0)) {
-            rightCtx.fillStyle = 'red';
-            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+        if (actorEntry.atrSTR <= 9) {
+            rightCtx.fillText(`STR: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 225);
         } else {
-            rightCtx.fillStyle = 'yellow';
-            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
-        }
+            rightCtx.fillText(`STR: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 225);
+        };
 
-        // COLOR CONDITIONAL FOR DEXTERITIY
-        if(actorEntry.attributeModifier(actorEntry.atrDEX) > 0) {
-            rightCtx.fillStyle = 'green';
-            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
-        } else if (actorEntry.attributeModifier(actorEntry.atrDEX < 0)) {
-            rightCtx.fillStyle = 'red';
-            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+        if (actorEntry.atrDEX <= 9) {
+            rightCtx.fillText(`DEX ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 250);
         } else {
-            rightCtx.fillStyle = 'yellow';
-            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
-        }
+            rightCtx.fillText(`DEX ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 250);
+        };
 
-        // COLOR CONDITIONAL FOR INTELLIGENCE
-        if(actorEntry.attributeModifier(actorEntry.atrINT) > 0) {
-            rightCtx.fillStyle = 'green';
-            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
-        } else if (actorEntry.attributeModifier(actorEntry.atrINT < 0)) {
-            rightCtx.fillStyle = 'red';
-            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+        if (actorEntry.atrINT <= 9) {
+            rightCtx.fillText(`INT: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 275);
         } else {
-            rightCtx.fillStyle = 'yellow';
-            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
-        }
+            rightCtx.fillText(`INT: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 275);
+        };
     };
-}
+};

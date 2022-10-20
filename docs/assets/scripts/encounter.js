@@ -4,8 +4,6 @@ class BattleEncounter {
     constructor(encounterRow, encounterColumn, leftActor, enemyActor) {
         this.encounterRow = encounterRow;
         this.encounterColumn = encounterColumn;
-/*         this.isPlayerTurn = false;
-        this.isEnemyTurn = false; */
         this.leftActor;
         this.enemyActor;
         this.encounterStarted = false;
@@ -52,26 +50,65 @@ class BattleEncounter {
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(0, 623, mainCanvas.width, 175);
         //
-/*         mainCtx.fillStyle = "#1e3f5a"; */ // BLUE
-/*         mainCtx.fillStyle = "#360202"; // RED */
-        mainCtx.fillStyle = "#022A02"; // GREEN
-        
+        mainCtx.fillStyle = "#022A02"; // GREEN #022A02 // RED #360202 // BLUE #1E3F5A
         mainCtx.fillRect(0, 625, mainCanvas.width, 175);
     }
 
     clearChatBox(){
-        mainCtx.clearRect(0, 625, mainCanvas.width, 175);
+        mainCtx.clearRect(0, 125, mainCanvas.width, 175);
     }
 
-/*     createAttackDeclaration(actionName){
-        mainCtx.fillStyle = "#1e3f5a";
-        mainCtx.fillRect(700, 625, 150, 40);
-        //
-        mainCtx.fillStyle = "white"
-        mainCtx.font = "20px fantasy";
-        mainCtx.fillText(`${actionName}+ !`, 700, 625);
-        //
-    }; */
+    createDeclaration(actionName, actor){
+        if (actor.friendly) {
+            mainCtx.fillStyle = "#360202";
+            mainCtx.fillRect(180, 50, 155, 40);
+            //
+            mainCtx.fillStyle = "white"
+            mainCtx.font = "italic 23.5px fantasy";
+            mainCtx.fillText(`${actionName} !`, 190, 80);
+            //
+            setInterval(() => {
+                mainCtx.clearRect(180, 50, 155, 40);
+            }, 2000);
+        } else { // IF ENEMY
+            mainCtx.fillStyle = "#360202";
+            mainCtx.fillRect(750, 50, 155, 40);
+            //
+            mainCtx.fillStyle = "white"
+            mainCtx.font = "italic 23.5px fantasy";
+            mainCtx.fillText(`${actionName} !`, 765, 80);
+            //
+            setInterval(() => {
+                mainCtx.clearRect(750, 50, 155, 40);
+            }, 2000);
+        }
+    };
+
+    createHitDeclaration(actor, string){
+        if (actor.friendly) {
+            mainCtx.fillStyle = "#360202";
+            mainCtx.fillRect(180, 85, 155, 35);
+            //
+            mainCtx.fillStyle = "white"
+            mainCtx.font = "italic 23.5px fantasy";
+            mainCtx.fillText(`${string}`, 225, 110);
+            //
+            setInterval(() => {
+                mainCtx.clearRect(180, 90, 155, 50);
+            }, 2000);
+        } else {  // IF ENEMY
+            mainCtx.fillStyle = "#360202";
+            mainCtx.fillRect(750, 80, 155, 40);
+            //
+            mainCtx.fillStyle = "white"
+            mainCtx.font = "italic 23.5px fantasy";
+            mainCtx.fillText(`${string}`, 795, 110);
+            //
+            setInterval(() => {
+                mainCtx.clearRect(750, 80, 155, 40);
+            }, 2000);
+        }
+    }
 
     createDescripText(sentence1, sentence2, sentence3){
         mainCtx.fillStyle = "white";
@@ -132,32 +169,24 @@ class BattleEncounter {
         mainCtx.fillText("W", 577.2, 714);
     }
 
-    drawBackground(player) {
-/*         let alphaBackground = new Image ();
-        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg'; */
-        
-/*         mainCtx.drawImage(alphaBackground, 0, 0); */
+    drawBackground(player, enemy) {
+
         mainCanvas.style.backgroundSize = "1200px 625px";
         mainCanvas.style.backgroundRepeat = "no-repeat";
         mainCanvas.style.backgroundImage = "url(docs/assets/images/dd_ruins_background.jpg)";
 
-
-        rightCanvas.style.backgroundSize = "200px 400px";
-        rightCanvas.style.backgroundRepeat = "no-repeat";
-        rightCanvas.style.backgroundImage = "url(dd_bone_goo.png)";
-        rightCanvas.style.backgroundColor = "black";
-
-/*         let leftBackground = new Image ();
-        leftBackground.src = 'warrior_canvas.jpg';
-
-        leftCtx.drawImage(leftBackground, 0, 0); */
+        if (enemy.actorName === "Green Slime" ) {
+            rightCanvas.style.backgroundSize = "200px 400px";
+            rightCanvas.style.backgroundRepeat = "no-repeat";
+            rightCanvas.style.backgroundImage = "url(dd_bone_goo.png)";
+            rightCanvas.style.backgroundColor = "black";
+        }
 
         if (player.className === "Human Warrior") {
             leftCanvas.style.backgroundSize = "200px 400px";
             leftCanvas.style.backgroundRepeat = "no-repeat";
             leftCanvas.style.backgroundImage = "url(warrior_canvas.jpg)";
         }
-
     }
 
     triggerAttack(attacker, defender, actionIndex){
