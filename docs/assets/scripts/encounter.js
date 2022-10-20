@@ -85,7 +85,6 @@ class BattleEncounter {
     };
 
     createAttackMenu(actor){
-        console.log("You attempted to create an AttackMeu");
         //
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(29, 689, 152, 42);
@@ -118,23 +117,16 @@ class BattleEncounter {
         mainCtx.fillStyle = "black";
         mainCtx.font = "25px arial";
         mainCtx.fillText("Q", 13, 713);
-
         //Keyboard A
         mainCtx.drawImage(this.image, 4, 738, 38, 38);
         mainCtx.fillText("A", 14.5, 765);
-
         //Keyboard S
         mainCtx.drawImage(this.image, 570, 738, 38, 38);
         mainCtx.fillText("S", 581, 763);
-
         //Keyboard W
         mainCtx.font = "24px arial";
         mainCtx.drawImage(this.image, 570, 688, 38, 38);
         mainCtx.fillText("W", 577.2, 714);
-
-
-
-
     }
 
     drawBackground() {
