@@ -77,12 +77,6 @@ class Game {
         ctx.fillStyle = fillColor;
         ctx.fillText(string, x, y);
     };
-
-    printBothStats (player, enemy) {
-        lateralCtx.clearRect(0, 0, 200, 800);
-        this.printHeroStats(player);
-        this.printEnemyStats(enemy);
-    };
     
     printSpeedBars (player, enemy) {
         mainCtx.font = "25px fantasy";
@@ -121,6 +115,12 @@ class Game {
         mainCtx.fillRect(218, 212, (player.atrHP / player.atrMaxHP * 100), 6);
         mainCtx.fillRect(961, 212, (enemy.atrHP / enemy.atrMaxHP * 100), 6);
     }
+
+    printBothStats (player, enemy) {
+        lateralCtx.clearRect(0, 0, 200, 800);
+        this.printHeroStats(player);
+        this.printEnemyStats(enemy);
+    };
 
     printHeroStats (actorEntry) {
         lateralCtx.font = '15.5px georgia';
@@ -166,10 +166,9 @@ class Game {
         }
     }
 
-
     /// INCLUDE FUTURE CONDITIONALS TO HIDE VALUES BASED ON PLAYER OWN VLAUES
 
-    /// , , , , , 
+    ///
 
     printEnemyStats (actorEntry) {
         lateralCtx.font = '15.5px georgia';
