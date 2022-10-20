@@ -105,11 +105,11 @@ class Game {
         //
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(217, 211.5, 101.5, 7.1);
-        mainCtx.fillRect(810, 211.5, 101.5, 7.1);
+        mainCtx.fillRect(810, 211.5, 101.5, 7.2);
         //
         mainCtx.fillStyle = "black";
         mainCtx.fillRect(218, 212, 100, 6.1);
-        mainCtx.fillRect(851, 212, 60, 6.1);
+        mainCtx.fillRect(811, 212, 100, 6.1);
         //
         mainCtx.fillStyle = "green";
         mainCtx.fillRect(218, 212, (player.atrHP / player.atrMaxHP * 100), 6);

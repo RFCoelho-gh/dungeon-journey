@@ -183,7 +183,7 @@ document.addEventListener('keydown', (e) => {
                 if (player.attributeModifier(player.atrSTR) + player.rollDice(20) + BAB >= firstEnemy.atrSTR) {
                     let floatingDamage = player.rollDice(player.actions[3].abilityDamageDice) + player.attributeModifier(player.atrSTR);
                     firstEnemy.atrHP -= floatingDamage;
-                    firstEnemy.atrSPD -= (floatingDamage * 3) * 2;
+                    firstEnemy.atrSPD -= (floatingDamage * 3) * 2; // SLOW EFFECT
                     firstEncounter.createHitDeclaration(player, `-${floatingDamage} HP!`);
                 } else {
                     firstEncounter.createHitDeclaration(player, "Miss !")
