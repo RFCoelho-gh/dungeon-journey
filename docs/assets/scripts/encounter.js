@@ -131,7 +131,7 @@ class BattleEncounter {
 
     drawBackground() {
         let alphaBackground = new Image ();
-        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg'
+        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg';
         
         mainCtx.drawImage(alphaBackground, 0, 0);
         mainCanvas.style.backgroundSize = "1200px 625px";

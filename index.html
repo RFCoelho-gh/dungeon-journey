@@ -9,41 +9,7 @@
 </head>
 <body>
     <div id="divCanvas">
-        <div id="divMenuButtons">
-            <div class="selectionForm">
-                <form action="">
-                    <label for="heroName">Name:</label>
-                    <input type="text" id="heroName" name="heroName" placeholder="Your Name"><br>
-                    <label for="ancestrySelector">Ancestry:</label>
-                    <input list="chosenAncestry" placeholder="Select Ancestry">
-                    <datalist id="chosenAncestry">
-                        <option value="Human"></option>
-                        <option value="Elf"></option>
-                        <option value="Dwarf"></option>
-                    </datalist><br>
-                    <label for="classSelector">Class:</label>
-                    <input list="chosenClass" placeholder="Select Hero Class">
-                    <datalist id="chosenClass">
-                        <option value="Warrior"></option>
-                        <option value="Ranger"></option>
-                        <option value="Wizard"></option>
-                    </datalist><br>
-                    <button id="mainStart-btn" type="button">Start!</button>
-                </form>
-            </div>
-            <div class="btnRow">
-                <button id="optionA-btn">A</button>
-                <button id="optionB-btn">B</button>
-            </div>
-            <div class="btnRow">
-                <button id="optionC-btn">C</button>
-                <button id="optionD-btn">D</button>
-            </div>
-            <div class="btnRow">
-                <button id="optionE-btn">E</button>
-                <button id="optionF-btn">F</button>
-            </div>
-        </div>
+        <canvas id="leftCanvas" style="border: 4px solid #342c1d" width="200" height="400"></canvas>
         <canvas id="mainCanvas" style="border: 4px solid rgb(91, 1, 1)" width="1200" height="800"></canvas>
         <canvas id="lateralCanvas" style="border: 4px solid #342c1d" width="200" height="800"></canvas>
     </div>

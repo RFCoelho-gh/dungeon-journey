@@ -23,19 +23,6 @@ firstEncounter.createDescripText(`The adventurer ${player.actorName} encounters 
 
 firstEncounter.drawBackground();
 
-/* const img = new Image ();
-
-img.src = "octopath_warrior_rightfacing.png";
-
-function drawWarrior(){
-    mainCtx.drawImage(img, 600, 400, 112, 131);
-    mainCtx.fillRect(600, 800, 50, 50);
-}; */
-
-/* mainCtx.fillStyle = 'docs/assets/images/octopath_warrior_rightfacing.png'; */
-/* mainCtx.fillStyle = "red"; */
-/* mainCtx.fillRect(600, 400, 112, 131); */
-
 setTimeout(() => {
     firstEncounter.clearChatBox();
     firstEncounter.createChatBox();
@@ -62,7 +49,6 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
     game.printBothStats(player, firstEnemy);
     game.printSpeedBars(player, firstEnemy);
     game.printHealthBars(player, firstEnemy);
-    drawWarrior();
 }, 1000 / 60 * anonymousIntervalHandler);
 
 setInterval(() =>{ // Increasing Speed of all actors as per their Dexteritiy Modifier
@@ -106,43 +92,39 @@ setInterval(()=>{
 
 //* CONTROLS
 
-document.getElementById("optionA-btn").addEventListener("click", () => {
-    if (player.atrSPD >= 100 && player.atrHP > 0) {
-        player.atrSPD -= 100;
-        if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrSTR) {
-            let floatingDamage = player.rollDice(player.actions[0].abilityDamageDice) + player.attributeModifier(player.atrSTR);
-            firstEnemy.atrHP -= floatingDamage;
-            firstEnemy.atrSPD -= floatingDamage * 3;
-        };
-    } else {
-        console.log("No speed!")
-    };
+document.addEventListener('keydown', (e) => {
+    switch (e.code) {
+        case 'KeyQ':
+            if (player.atrSPD >= 100 && player.atrHP > 0) {
+                player.atrSPD -= 100;
+                if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrSTR) {
+                    let floatingDamage = player.rollDice(player.actions[0].abilityDamageDice) + player.attributeModifier(player.atrSTR);
+                    firstEnemy.atrHP -= floatingDamage;
+                    firstEnemy.atrSPD -= floatingDamage * 3;
+                };
+            }
+        break;
+        case 'KeyA':
+             if (player.atrSPD >= 80 && player.atrHP > 0) {
+                player.atrSPD -= 80;
+                if (player.attributeModifier(player.atrDEX) + player.rollDice(20) >= firstEnemy.atrDEX) {
+                    let floatingDamage = player.rollDice(player.actions[1].abilityDamageDice) + player.attributeModifier(player.atrDEX);
+                    firstEnemy.atrHP -= floatingDamage;
+                    firstEnemy.atrSPD -= floatingDamage * 3;
+                };
+            };
+        break;
+        case 'KeyW':
+            if (player.atrSPD >= 60 && player.atrHP > 0) {
+                player.atrSPD -= 60;
+                if (player.attributeModifier(player.atrINT) + player.rollDice(20) >= firstEnemy.atrINT) {
+                    let floatingDamage = player.rollDice(player.actions[2].abilityDamageDice) + player.attributeModifier(player.atrINT);
+                    firstEnemy.atrHP -= floatingDamage;
+                    firstEnemy.atrSPD -= floatingDamage * 3;
+                };
+            };
+        break;
+    }
 });
-
-document.getElementById("optionB-btn").addEventListener("click", () => {
-    if (player.atrSPD >= 80 && player.atrHP > 0) {
-        player.atrSPD -= 80;
-        if (player.attributeModifier(player.atrDEX) + player.rollDice(20) >= firstEnemy.atrDEX) {
-            let floatingDamage = player.rollDice(player.actions[1].abilityDamageDice) + player.attributeModifier(player.atrDEX);
-            firstEnemy.atrHP -= floatingDamage;
-            firstEnemy.atrSPD -= floatingDamage * 3;
-        };
-    };
-});
-
-document.getElementById("optionC-btn").addEventListener("click", () => {
-    if (player.atrSPD >= 60 && player.atrHP > 0) {
-        player.atrSPD -= 60;
-        if (player.attributeModifier(player.atrINT) + player.rollDice(20) >= firstEnemy.atrINT) {
-            let floatingDamage = player.rollDice(player.actions[2].abilityDamageDice) + player.attributeModifier(player.atrINT);
-            firstEnemy.atrHP -= floatingDamage;
-            firstEnemy.atrSPD -= floatingDamage * 3;
-        };
-    };
-});
-
-console.log(player)
-
-console.log(firstEnemy);
 
 

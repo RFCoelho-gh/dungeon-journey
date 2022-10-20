@@ -1,10 +1,10 @@
 //* base Actor
 
-let baseHP = 12+10+(0);
-let baseSTR = 10;
-let baseDEX = 10;
-let baseINT = 10;
-let baseSPD = 0;
+const baseHP = 12+10+(0);
+const baseSTR = 10;
+const baseDEX = 10;
+const baseINT = 10;
+const baseSPD = 0;
 
 class Actor {
     constructor(){
@@ -24,7 +24,6 @@ class Actor {
         img1.src = "dd_warrior_rightfacing.png";
 
         this.image = img1;
-
     }
 
     setName(newName) {
@@ -39,9 +38,6 @@ class Actor {
         if (typeof diceSize !== "number" ) {
             throw new Error ('method "rollDice" received a non-number as an Argument')
         }
-/*         if (diceSize !== 2 || diceSize !== 3 || diceSize !== 4 || diceSize !== 6 || diceSize !== 10 || diceSize !== 12 || diceSize !== 20 || diceSize !== 100) {
-            throw new Error ('method "rollDice" received a invalid number')
-        } */
         return (Math.floor(Math.random() * (diceSize - 1 + 1) + 1 ))
     }
 
