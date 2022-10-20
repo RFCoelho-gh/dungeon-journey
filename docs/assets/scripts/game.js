@@ -117,52 +117,55 @@ class Game {
     }
 
     printBothStats (player, enemy) {
-        lateralCtx.clearRect(0, 0, 200, 800);
+        leftCtx.clearRect(0, 0, 200, 400);
+        rightCtx.clearRect(0, 0, 200, 400);
         this.printHeroStats(player);
         this.printEnemyStats(enemy);
     };
 
     printHeroStats (actorEntry) {
-        lateralCtx.font = '15.5px georgia';
-        lateralCtx.fillStyle = 'black';
-        lateralCtx.fillText(`Name: ${actorEntry.actorName}`, 8, 50);
-        lateralCtx.fillText(`Class: ${actorEntry.className}`, 8, 75);
-        lateralCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 8, 100);
+        leftCtx.font = 'italic 25.5px fantasy';
+        leftCtx.fillStyle = 'gold';
+        leftCtx.fillText(`${actorEntry.actorName}`, 45, 30);
+        leftCtx.fillStyle = 'white';
+        leftCtx.font = '15.5px georgia';
+        leftCtx.fillText(`Class: ${actorEntry.className}`, 14, 75);
+        leftCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 14, 100);
 
         // COLOR CONDITIONAL FOR STRENGTH
         if(actorEntry.attributeModifier(actorEntry.atrSTR) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+            leftCtx.fillStyle = 'green';
+            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
         } else if (actorEntry.attributeModifier(actorEntry.atrSTR < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+            leftCtx.fillStyle = 'red';
+            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
+            leftCtx.fillStyle = 'yellow';
+            leftCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 14, 125);
         }
 
         // COLOR CONDITIONAL FOR DEXTERITIY
         if(actorEntry.attributeModifier(actorEntry.atrDEX) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+            leftCtx.fillStyle = 'green';
+            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
         } else if (actorEntry.attributeModifier(actorEntry.atrDEX < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+            leftCtx.fillStyle = 'red';
+            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
+            leftCtx.fillStyle = 'yellow';
+            leftCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 14, 150);
         }
 
         // COLOR CONDITIONAL FOR INTELLIGENCE
         if(actorEntry.attributeModifier(actorEntry.atrINT) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+            leftCtx.fillStyle = 'green';
+            leftCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
         } else if (actorEntry.attributeModifier(actorEntry.atrINT < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+            leftCtx.fillStyle = 'red';
+            leftCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
+            leftCtx.fillStyle = 'yellow';
+            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 14, 175);
         }
     }
 
@@ -171,46 +174,48 @@ class Game {
     ///
 
     printEnemyStats (actorEntry) {
-        lateralCtx.font = '15.5px georgia';
-        lateralCtx.fillStyle = 'black';
-        lateralCtx.fillText(`Name: ${actorEntry.actorName}`, 8, 625);
-        lateralCtx.fillText(`Class: ${actorEntry.className}`, 8, 650);
-        lateralCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 8, 675);
+        rightCtx.font = 'italic 25.5px fantasy';
+        rightCtx.fillStyle = 'dark red';
+        rightCtx.fillText(`${actorEntry.actorName}`, 35, 30);
+        rightCtx.fillStyle = 'white';
+        rightCtx.font = '15.5px georgia';
+        rightCtx.fillText(`Class: ${actorEntry.className}`, 8, 75);
+        rightCtx.fillText(`Hit Points: ${actorEntry.atrHP}`, 8, 100);
 
         // COLOR CONDITIONAL FOR STRENGTH
         if(actorEntry.attributeModifier(actorEntry.atrSTR) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 700);
+            rightCtx.fillStyle = 'green';
+            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (+${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
         } else if (actorEntry.attributeModifier(actorEntry.atrSTR < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 700);
+            rightCtx.fillStyle = 'red';
+            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 700);
+            rightCtx.fillStyle = 'yellow';
+            rightCtx.fillText(`Strength: ${actorEntry.atrSTR} (-${actorEntry.attributeModifier(actorEntry.atrSTR)})`, 8, 125);
         }
 
         // COLOR CONDITIONAL FOR DEXTERITIY
         if(actorEntry.attributeModifier(actorEntry.atrDEX) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 725);
+            rightCtx.fillStyle = 'green';
+            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (+${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
         } else if (actorEntry.attributeModifier(actorEntry.atrDEX < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 725);
+            rightCtx.fillStyle = 'red';
+            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 725);
+            rightCtx.fillStyle = 'yellow';
+            rightCtx.fillText(`Dexterity: ${actorEntry.atrDEX} (-${actorEntry.attributeModifier(actorEntry.atrDEX)})`, 8, 150);
         }
 
         // COLOR CONDITIONAL FOR INTELLIGENCE
         if(actorEntry.attributeModifier(actorEntry.atrINT) > 0) {
-            lateralCtx.fillStyle = 'green';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 750);
+            rightCtx.fillStyle = 'green';
+            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (+${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
         } else if (actorEntry.attributeModifier(actorEntry.atrINT < 0)) {
-            lateralCtx.fillStyle = 'red';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 750);
+            rightCtx.fillStyle = 'red';
+            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
         } else {
-            lateralCtx.fillStyle = 'yellow';
-            lateralCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 750);
+            rightCtx.fillStyle = 'yellow';
+            rightCtx.fillText(`Intelligence: ${actorEntry.atrINT} (-${actorEntry.attributeModifier(actorEntry.atrINT)})`, 8, 175);
         }
     };
 }

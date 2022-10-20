@@ -56,7 +56,7 @@ class Actor {
             mainCtx.fillStyle = image;
 /*             mainCtx.fillRect(950, 400, this.width, this.height); */
 
-            mainCtx.drawImage(this.image, 780, 280, this.width, this.height);
+            mainCtx.drawImage(this.image, 780, 300, this.width, this.height);
 
         } else { // IF PLAYER
 
@@ -129,7 +129,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `STR ⚔ STR ~ ❤ d8+STR ~ ↻ 100`,
+                abilityShortDescrip: `d20+2 ⚔ STR ~ ❤ d8+2 ~ ↻ 100`,
                 abilityDescription: `${actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.atrSPD === 100) {
@@ -148,7 +148,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Dexterity",
                 abilityDamageDice: 6,
                 abilityDamageType: "piercing",
-                abilityShortDescrip: `DEX ⚔ DEX ~ ❤ d6+DEX ~ ↻ 80`,
+                abilityShortDescrip: `d20+1 ⚔ DEX ~ ❤ d6+1 ~ ↻ 80`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
@@ -163,7 +163,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Intelligence",
                 abilityDamageDice: 4,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `INT ⚔ INT ~ ❤ d4+INT ~ ↻ 60`,
+                abilityShortDescrip: `d20-1 ⚔ INT ~ ❤ d4-1 ~ ↻ 60`,
                 abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
                 execute(target) { // RETURNS DAMAGE VALUE
                     if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
@@ -190,7 +190,7 @@ class BaseSlime extends Actor {
             slimeBonusHP: -7+4,
             slimeBonusSTR: -2+4,
             slimeBonusDEX: 2+4,
-            slimeBonusINT: -5+4,
+            slimeBonusINT: -5+2,
             slimeBonusSPD: 0,
         };
         this.atrMaxHP = baseHP + this.slimeAtrBonus.slimeBonusHP;
@@ -202,11 +202,11 @@ class BaseSlime extends Actor {
         this.color = "green";
         this.backgroundX = 0;
         this.backgroundY = 0;
-        this.width = 574/2.5;
-        this.height = 759/2.5;
+        this.width = 340/2;
+        this.height = 554/2;
 
         const img1 = new Image ();
-        img1.src = "dd_goo.png";
+        img1.src = "dd_bone_goo.png";
 
         this.image = img1;
 
@@ -214,7 +214,7 @@ class BaseSlime extends Actor {
             {
                 abilityName: "Slimy Slam",
                 abilityAttribute: "Strength",
-                abilityDamageDice: 4,
+                abilityDamageDice: 6,
                 abilityDamageType: "acid",
                 descriptionSlimySlam: `${this.actorName} attacks their enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
@@ -228,7 +228,7 @@ class BaseSlime extends Actor {
             {
                 abilityName: "Acid Splash",
                 abilityAttribute: "Dexterity",
-                abilityDamageDice: 3,
+                abilityDamageDice: 4,
                 abilityDamageType: "acid",
                 descriptionAcidSplash: `${this.actorName} attacks their enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
@@ -238,7 +238,21 @@ class BaseSlime extends Actor {
                         return 0; //? Use 0 as Boolean for MISS
                     }
                 },
-            }
+            },
+            {
+                abilityName: "Plasmic Devouring",
+                abilityAttribute: "Intelligence",
+                abilityDamageDice: 4,
+                abilityDamageType: "acid",
+                descriptionAcidSplash: `${this.actorName} attacks their enemy, with a modifier of D20+${this.attributeModifier(this.atrDEX)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrDEX)} points of ${this.abilityDamageType} damage.`,
+                execute(target){ // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrDEX) + this.rollDice(20) >= target.atrDEX) {
+                        return this.rollDice(this.actions[1].abilityDamageDice) + this.attributeModifier(this.atrDEX);
+                    } else {
+                        return 0; //? Use 0 as Boolean for MISS
+                    }
+                },
+            },
         ]
     }
 

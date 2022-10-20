@@ -52,7 +52,10 @@ class BattleEncounter {
         mainCtx.fillStyle = "white";
         mainCtx.fillRect(0, 623, mainCanvas.width, 175);
         //
-        mainCtx.fillStyle = "#1e3f5a";
+/*         mainCtx.fillStyle = "#1e3f5a"; */ // BLUE
+/*         mainCtx.fillStyle = "#360202"; // RED */
+        mainCtx.fillStyle = "#022A02"; // GREEN
+        
         mainCtx.fillRect(0, 625, mainCanvas.width, 175);
     }
 
@@ -129,14 +132,32 @@ class BattleEncounter {
         mainCtx.fillText("W", 577.2, 714);
     }
 
-    drawBackground() {
-        let alphaBackground = new Image ();
-        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg';
+    drawBackground(player) {
+/*         let alphaBackground = new Image ();
+        alphaBackground.src = 'docs/assets/scripts/dd_ruins_background.jpg'; */
         
-        mainCtx.drawImage(alphaBackground, 0, 0);
+/*         mainCtx.drawImage(alphaBackground, 0, 0); */
         mainCanvas.style.backgroundSize = "1200px 625px";
         mainCanvas.style.backgroundRepeat = "no-repeat";
         mainCanvas.style.backgroundImage = "url(docs/assets/images/dd_ruins_background.jpg)";
+
+
+        rightCanvas.style.backgroundSize = "200px 400px";
+        rightCanvas.style.backgroundRepeat = "no-repeat";
+        rightCanvas.style.backgroundImage = "url(dd_bone_goo.png)";
+        rightCanvas.style.backgroundColor = "black";
+
+/*         let leftBackground = new Image ();
+        leftBackground.src = 'warrior_canvas.jpg';
+
+        leftCtx.drawImage(leftBackground, 0, 0); */
+
+        if (player.className === "Human Warrior") {
+            leftCanvas.style.backgroundSize = "200px 400px";
+            leftCanvas.style.backgroundRepeat = "no-repeat";
+            leftCanvas.style.backgroundImage = "url(warrior_canvas.jpg)";
+        }
+
     }
 
     triggerAttack(attacker, defender, actionIndex){

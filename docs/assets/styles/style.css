@@ -23,8 +23,6 @@ html {
     font-size: 3rem;
 }
 
-
-
 #buttonRow {
 	display: flex;
 	flex-direction: column;
@@ -47,7 +45,7 @@ canvas {
 .fakeH2 {
     font-size: 1.8rem;
     font-weight: bolder;
-    color: #a7a7a7;
+    color: whitesmoke;
 }
 
 #holdingTitle {

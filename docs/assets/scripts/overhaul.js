@@ -21,7 +21,7 @@ firstEncounter.createChatBox();
 
 firstEncounter.createDescripText(`The adventurer ${player.actorName} encounters a wandering ${firstEnemy.actorName} while in the dungeon!`, "It seems hostile!", `Prepare for battle, ${player.actorName}, the ${player.className}!`);
 
-firstEncounter.drawBackground();
+firstEncounter.drawBackground(player);
 
 setTimeout(() => {
     firstEncounter.clearChatBox();
@@ -70,21 +70,28 @@ setInterval(() =>{
 setInterval(()=>{
     if (firstEnemy.atrSPD >= 100 && player.atrHP > 0 && firstEnemy.atrHP > 0) {
         firstEnemy.atrSPD -= 100;
-        let RNG = firstEnemy.rollDice(2);
+        let RNG = firstEnemy.rollDice(5);
 
-        if (RNG === 1) {
+        if (RNG >= 1 || RNG <= 2) {
 /*             firstEncounter.createAttackDeclaration(firstEnemy.actions[0].abilityName) */
             if (firstEnemy.attributeModifier(firstEnemy.atrSTR) + firstEnemy.rollDice(20) >= player.atrSTR) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[0].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrSTR);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
                 player.atrSPD -= Math.floor((floatingDamage * 3) * 1.25);
             };
-        } else if (RNG === 2) {
+        } else if (RNG >= 3 || RNG <= 4) {
 /*             firstEncounter.createAttackDeclaration(firstEnemy.actions[1].abilityName) */
             if (firstEnemy.attributeModifier(firstEnemy.atrDEX) + firstEnemy.rollDice(20) >= player.atrDEX) {
                 let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[1].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrDEX);
                 player.atrHP -= Math.floor(floatingDamage * 1.25);
                 player.atrSPD -= Math.floor((floatingDamage * 3) * 1.25);
+            }
+        } else if (RNG === 5) {
+            if (firstEnemy.attributeModifier(firstEnemy.atrINT) + firstEnemy.rollDice(20) >= player.atrINT) {
+                let floatingDamage = firstEnemy.rollDice(firstEnemy.actions[2].abilityDamageDice) + firstEnemy.attributeModifier(firstEnemy.atrINT);
+                player.atrHP -= Math.floor(floatingDamage * 1.25);
+                player.atrSPD -= Math.floor ((floatingDamage * 3) * 1.25);
+                firstEnemy.atrHP += Math.floor((floatingDamage * 1.25) / 2);
             }
         }
     }
