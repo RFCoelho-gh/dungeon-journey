@@ -210,7 +210,7 @@ class BaseSlime extends Actor {
         this.height = 759/2.5;
 
         const img1 = new Image ();
-        img1.src = "dd_ectoplasm.png";
+        img1.src = "dd_goo.png";
 
         this.image = img1;
 

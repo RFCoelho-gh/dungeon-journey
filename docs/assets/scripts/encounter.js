@@ -9,6 +9,11 @@ class BattleEncounter {
         this.leftActor;
         this.enemyActor;
         this.encounterStarted = false;
+
+        const img1 = new Image ();
+        img1.src = "icon-btn.png";
+
+        this.image = img1;
     }
 
     setActors(playerActor, enemyActor){
@@ -93,18 +98,42 @@ class BattleEncounter {
         mainCtx.fillRect(30, 740, 150, 40);
         mainCtx.fillRect(600, 690, 150, 40);
         mainCtx.fillRect(600, 740, 150, 40);
+        //
         mainCtx.font = "20px fantasy";
         mainCtx.fillStyle = "gold";
         mainCtx.fillText(`${actor.actions[0].abilityName}`, 42.5, 718);
         mainCtx.fillText(`${actor.actions[1].abilityName}`, 42.5, 768);
         mainCtx.fillText(`${actor.actions[2].abilityName}`, 610, 718);
         mainCtx.fillText(`Filler Action`, 610, 768);
+        //
         mainCtx.fillStyle = "white";
         mainCtx.font = "18px cambria";
         mainCtx.fillText(`${actor.actions[0].abilityShortDescrip}`, 190, 715);
         mainCtx.fillText(`${actor.actions[1].abilityShortDescrip}`, 190, 765);
         mainCtx.fillText(`${actor.actions[2].abilityShortDescrip}`, 760, 715);
         mainCtx.fillText(`Lorem ipsum, filler text.`, 760, 765);
+        //
+        // Keyboard Q
+        mainCtx.drawImage(this.image, 4, 688, 38, 38);
+        mainCtx.fillStyle = "black";
+        mainCtx.font = "25px arial";
+        mainCtx.fillText("Q", 13, 713);
+
+        //Keyboard A
+        mainCtx.drawImage(this.image, 4, 738, 38, 38);
+        mainCtx.fillText("A", 14.5, 765);
+
+        //Keyboard S
+        mainCtx.drawImage(this.image, 570, 738, 38, 38);
+        mainCtx.fillText("S", 581, 763);
+
+        //Keyboard W
+        mainCtx.font = "24px arial";
+        mainCtx.drawImage(this.image, 570, 688, 38, 38);
+        mainCtx.fillText("W", 577.2, 714);
+
+
+
 
     }
 
@@ -128,14 +157,9 @@ class BattleEncounter {
             this.createChatBox();
             attacker.atrSPD -= 60;
             console.log(damage);
-
             if (damage > 0) {
                 defender.atrHP -= damage;
             }
-
-
-
-
             if (damage >= 1){
                 if (attacker.atrHP > damage) {
                     defender.atrHP -= damage;

@@ -8,12 +8,12 @@ class Game {
         if (player.atrHP === 0 && enemy.atrHP >= 1) { // PLAYER LOSS
             mainCtx.font = '80px fantasy';
             mainCtx.fillStyle = "#8B0000";
-            mainCtx.fillText(`${player.actorName} lost!`, 450, 325);
+            mainCtx.fillText(`${player.actorName} lost!`, 350, 325);
         }
         if (enemy.atrHP === 0 && player.atrHP >= 1) { // PLAYER WIN
             mainCtx.font = '80px fantasy';
             mainCtx.fillStyle = "white";
-            mainCtx.fillText(`${player.actorName} won!`,  450, 325)
+            mainCtx.fillText(`${player.actorName} won!`,  350, 325)
         }
     }
 
