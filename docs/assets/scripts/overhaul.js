@@ -1,11 +1,29 @@
 
 const game = new Game;
 
-const player = new HumanWarrior;
+function randomizeClass (){
+    let randomClass;
+    let RNG = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+    if (RNG >= 1 || RNG <=4 ) {
+        randomClass = new HumanWarrior;
+    }
+    return randomClass;
+}
+
+const player = randomizeClass();
 
 const firstEncounter = new BattleEncounter;
 
-const firstEnemy = new BaseSlime;
+function randomizeEnemy (){
+    let randomEnemy;
+    let RNG = Math.floor(Math.random() * (4 - 1 + 1) + 1);
+    if (RNG >= 1 || RNG <= 4) {
+        randomEnemy = new BaseSlime;
+    }
+    return randomEnemy;
+}
+
+const firstEnemy = randomizeEnemy();
 
 player.actorName = "Reynauld";
 
@@ -44,8 +62,8 @@ setInterval(() =>{ /// Limiting Speed of all Actors, Redrawing all the time
         firstEnemy.atrSPD = 100;
     }
     mainCtx.clearRect(0, 0, 1200, 624);
-    player.drawActor(player.color, player.img, player.actorName);
-    firstEnemy.drawActor(firstEnemy.color, firstEnemy.img, firstEnemy.actorName);
+    player.drawActor(player.color, player.image, player.actorName);
+    firstEnemy.drawActor(firstEnemy.color, firstEnemy.image, firstEnemy.actorName);
     game.printBothStats(player, firstEnemy);
     game.printSpeedBars(player, firstEnemy);
     game.printHealthBars(player, firstEnemy);
@@ -104,7 +122,7 @@ document.addEventListener('keydown', (e) => {
         case 'KeyQ':
             if (player.atrSPD >= 100 && player.atrHP > 0) {
                 player.atrSPD -= 100;
-                if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrSTR) {
+                if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrDEX) {
                     let floatingDamage = player.rollDice(player.actions[0].abilityDamageDice) + player.attributeModifier(player.atrSTR);
                     firstEnemy.atrHP -= floatingDamage;
                     firstEnemy.atrSPD -= floatingDamage * 3;
@@ -128,6 +146,16 @@ document.addEventListener('keydown', (e) => {
                     let floatingDamage = player.rollDice(player.actions[2].abilityDamageDice) + player.attributeModifier(player.atrINT);
                     firstEnemy.atrHP -= floatingDamage;
                     firstEnemy.atrSPD -= floatingDamage * 3;
+                };
+            };
+        break;
+        case 'KeyS':
+            if (player.atrSPD >= 100 && player.atrHP > 0) {
+                player.atrSPD -= 100;
+                if (player.attributeModifier(player.atrSTR) + player.rollDice(20) >= firstEnemy.atrSTR) {
+                    let floatingDamage = player.rollDice(player.actions[3].abilityDamageDice) + player.attributeModifier(player.atrSTR);
+                    firstEnemy.atrHP -= floatingDamage;
+                    firstEnemy.atrSPD -= (floatingDamage * 3) * 2;
                 };
             };
         break;

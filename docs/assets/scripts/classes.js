@@ -19,9 +19,11 @@ class Actor {
         this.friendly = false;
         this.width = 50;
         this.height = 50;
+        this.animState = "idle"; // or attack, or defend
 
-        const img1 = new Image ();
+        const img1 = new Image (); // IDLE
         img1.src = "dd_warrior_rightfacing.png";
+
 
         this.image = img1;
     }
@@ -105,7 +107,7 @@ class HumanWarrior extends Human {
         super(atrMaxHP, atrHP, atrSTR, atrDEX, atrINT, atrSPD, friendly, width, height)
         this.warriorAtrBonus = {
             warriorBonusHP: 6,
-            warriorBonusSTR: 4,
+            warriorBonusSTR: 4+2,
             warriorBonusDEX: 2,
             warriorBonusINT: -2,
             warriorBonusSPD: 0,
@@ -129,7 +131,7 @@ class HumanWarrior extends Human {
                 abilityAttribute: "Strength",
                 abilityDamageDice: 8,
                 abilityDamageType: "slashing",
-                abilityShortDescrip: `d20+2 ⚔ STR ~ ❤ d8+2 ~ ↻ 100`,
+                abilityShortDescrip: `d20+3 ⚔ DEX ~ ❤ d8+3 ~ ↻ 100`,
                 abilityDescription: `${actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrSTR)}, causing D${(this.abilityDamageDice)}+${this.attributeModifier(this.atrSTR)} points of ${this.abilityDamageType} damage.`,
                 execute(target){ // RETURNS DAMAGE VALUE
                     if (this.atrSPD === 100) {
@@ -173,6 +175,21 @@ class HumanWarrior extends Human {
                     }
                 },
             },
+            {
+                abilityName: "Pommel Stun",
+                abilityAttribute: "Strength",
+                abilityDamageDice: 3,
+                abilityDamageType: "bludgeoning",
+                abilityShortDescrip: `d20+3 ⚔ STR ~ ❤ d4+3 ~ ↻ 100 ~ 🌀 SLOW`,
+                abilityDescription: `${this.actorName} attacks the enemy, with a modifier of D20+${this.attributeModifier(this.atrINT)}, causing D${this.abilityDamageDice}+${this.attributeModifier(this.atrINT)} points of ${this.abilityDamageType} damage.`,
+                execute(target) { // RETURNS DAMAGE VALUE
+                    if (this.attributeModifier(this.atrINT) + this.rollDice(20) >= target.atrINT) {
+                        return this.rollDice(this.actions[2].abilityDamageDice) + this.attributeModifier(this.atrINT);
+                    } else {
+                        return 0;
+                    }
+                },
+            },
         ];
 
     }
@@ -187,9 +204,9 @@ class BaseSlime extends Actor {
         this.actorName = "Green Slime";
         this.className = "Common Ooze";
         this.slimeAtrBonus = {
-            slimeBonusHP: -7+4,
-            slimeBonusSTR: -2+4,
-            slimeBonusDEX: 2+4,
+            slimeBonusHP: -7+2,
+            slimeBonusSTR: -2+2+4,
+            slimeBonusDEX: 2+2,
             slimeBonusINT: -5+2,
             slimeBonusSPD: 0,
         };

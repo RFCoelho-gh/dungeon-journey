@@ -106,14 +106,14 @@ class BattleEncounter {
         mainCtx.fillText(`${actor.actions[0].abilityName}`, 42.5, 718);
         mainCtx.fillText(`${actor.actions[1].abilityName}`, 42.5, 768);
         mainCtx.fillText(`${actor.actions[2].abilityName}`, 610, 718);
-        mainCtx.fillText(`Filler Action`, 610, 768);
+        mainCtx.fillText(`${actor.actions[3].abilityName}`, 610, 768);
         //
         mainCtx.fillStyle = "white";
         mainCtx.font = "18px cambria";
         mainCtx.fillText(`${actor.actions[0].abilityShortDescrip}`, 190, 715);
         mainCtx.fillText(`${actor.actions[1].abilityShortDescrip}`, 190, 765);
         mainCtx.fillText(`${actor.actions[2].abilityShortDescrip}`, 760, 715);
-        mainCtx.fillText(`Lorem ipsum, filler text.`, 760, 765);
+        mainCtx.fillText(`${actor.actions[3].abilityShortDescrip}`, 760, 765);
         //
         // Keyboard Q
         mainCtx.drawImage(this.image, 4, 688, 38, 38);
